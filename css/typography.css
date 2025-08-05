@@ -65,6 +65,7 @@
   line-height: 48.167px;
   text-align: left;
   white-space: nowrap;
+  text-shadow: 2px 2px black;
 }
 
 .confidential-information {
@@ -94,7 +95,9 @@
   white-space: nowrap;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
 }
 

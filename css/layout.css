@@ -3,8 +3,8 @@
   width: 630px;
   height: 892px;
   margin: 0 auto;
-  /* background: rgba(0, 0, 0, 0); */
   overflow: hidden;
+  border: 1px solid var(--border-blue);
 }
 
 .root {
@@ -13,7 +13,6 @@
   top: 0;
   right: 0;
   left: 0;
-  /* background: rgba(0, 0, 0, 0); */
 }
 
 .report-cover {
@@ -22,22 +21,6 @@
   height: 555px;
   right: 0;
   bottom: 337px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/PntRMqAjnN.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 9;
-  border-radius: 7px 0 43px 148px;
-}
-
-.report-cover {
-  position: absolute;
-  width: 297px;
-  height: 555px;
-  right: 0;
-  bottom: 337px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/PntRMqAjnN.png)
-    no-repeat center;
-  background-size: cover;
   z-index: 9;
   border-radius: 7px 0 43px 148px;
 }
@@ -48,7 +31,6 @@
   top: 37px;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0);
   z-index: 1;
 }
 
@@ -58,7 +40,6 @@
   top: 37px;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0);
   z-index: 1;
 }
 
@@ -68,22 +49,8 @@
   height: 892px;
   right: 0;
   bottom: 0;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/ROQ91AExBO.png)
-    no-repeat center;
+  background: url(../assets/images/start.png) no-repeat center;
   background-size: cover;
-  z-index: 2;
-}
-
-.background-image {
-  position: absolute;
-  width: 630px;
-  height: 892px;
-  right: 0;
-  bottom: 0;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/ROQ91AExBO.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 2;
 }
 
 .report-header {

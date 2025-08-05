@@ -30,7 +30,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Inter, var(--default-font-family);
-  background: #aaa9a9;
+  /* background: #aaa9a9; */
 }
 
 input,
