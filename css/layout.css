@@ -1,0 +1,134 @@
+.main-container {
+  position: relative;
+  width: 630px;
+  height: 892px;
+  margin: 0 auto;
+  /* background: rgba(0, 0, 0, 0); */
+  overflow: hidden;
+}
+
+.root {
+  position: absolute;
+  height: 892px;
+  top: 0;
+  right: 0;
+  left: 0;
+  /* background: rgba(0, 0, 0, 0); */
+}
+
+.report-cover {
+  position: absolute;
+  width: 297px;
+  height: 555px;
+  right: 0;
+  bottom: 337px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/PntRMqAjnN.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 9;
+  border-radius: 7px 0 43px 148px;
+}
+
+.report-cover {
+  position: absolute;
+  width: 297px;
+  height: 555px;
+  right: 0;
+  bottom: 337px;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/PntRMqAjnN.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 9;
+  border-radius: 7px 0 43px 148px;
+}
+
+.report-metadata {
+  position: absolute;
+  height: 844px;
+  top: 37px;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+.report-metadata {
+  position: absolute;
+  height: 844px;
+  top: 37px;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+.background-image {
+  position: absolute;
+  width: 630px;
+  height: 892px;
+  right: 0;
+  bottom: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/ROQ91AExBO.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 2;
+}
+
+.background-image {
+  position: absolute;
+  width: 630px;
+  height: 892px;
+  right: 0;
+  bottom: 0;
+  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-05/ROQ91AExBO.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 2;
+}
+
+.report-header {
+  padding-top: 78px;
+  padding-left: 44px;
+}
+
+.assessment-details {
+  margin-top: 11px;
+  margin-left: 35px;
+}
+
+.date-row {
+  position: relative;
+  width: 208px;
+  height: 16px;
+  margin: 1px 0 0 0;
+}
+
+.company-branding {
+  margin: 57px 0 0 92px;
+}
+
+.confidential-notice {
+  margin: 596px 0 0 356px;
+}
+
+.report-info {
+  margin: 22px 0 0 30px;
+}
+
+.issue-date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 107px;
+  height: 14px;
+  margin: 1px 0 0 0;
+}
+
+.version-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 569px;
+  height: 17px;
+  margin: 0;
+}

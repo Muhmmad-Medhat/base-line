@@ -1,0 +1,116 @@
+.customer-button {
+  position: relative;
+  width: 190px;
+  height: 42px;
+  margin: 0 0 0 -11px;
+  background: rgba(0, 0, 0, 0);
+  z-index: 14;
+}
+
+.customer-background {
+  position: relative;
+  width: 183px;
+  height: 35px;
+  margin: 4px 0 0 4px;
+  background: var(--accent-blue);
+  border: 1px solid var(--border-blue);
+  z-index: 15;
+  border-radius: 0 7px 0 7px;
+}
+
+.customer-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  height: 22px;
+  right: 6px;
+  bottom: 6px;
+  color: var(--text-light);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.784px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 16;
+}
+
+.date-part:nth-child(1) {
+  position: absolute;
+  height: 16px;
+  right: 127px;
+  bottom: 0;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.date-part:nth-child(2) {
+  position: absolute;
+  height: 16px;
+  right: 58px;
+  bottom: 0;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.date-part:nth-child(3) {
+  position: absolute;
+  height: 16px;
+  right: 0;
+  bottom: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 14.523px;
+  white-space: nowrap;
+}
+
+.issue-date {
+  flex-shrink: 0;
+  position: relative;
+  height: 14px;
+  color: var(--text-quaternary);
+  font-size: 13.199999809265137px;
+  font-weight: 300;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.issue-year {
+  flex-shrink: 0;
+  position: relative;
+  height: 14px;
+  color: var(--text-quinary);
+  font-size: 11.600000381469727px;
+  font-weight: 300;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.version {
+  flex-shrink: 0;
+  position: relative;
+  height: 15px;
+  color: var(--text-senary);
+  font-size: 11.899999618530273px;
+  font-weight: 400;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.distribution-notice {
+  flex-shrink: 0;
+  position: relative;
+  height: 17px;
+  color: var(--text-septenary);
+  font-size: 11.699999809265137px;
+  font-weight: 300;
+  line-height: 17px;
+  white-space: nowrap;
+}
