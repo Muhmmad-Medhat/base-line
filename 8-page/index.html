@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Awareness Report - Page 8</title>
+    <!-- amCharts Resources -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+        margin: 0;
+        padding: 20px;
+        position: relative;
+      }
+
+      /* A4 Paper container */
+      .a4-container {
+        width: 210mm;
+        height: 297mm;
+        max-width: 210mm;
+        max-height: 297mm;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Background decorative elements */
+      .bg-decoration {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(
+          135deg,
+          #4dd0e1 0%,
+          #00bcd4 50%,
+          #b3e5fc 100%
+        );
+        border-radius: 50%;
+        opacity: 0.15;
+        z-index: 0;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        padding: 15mm;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 300;
+        color: #4dd0e1;
+        letter-spacing: -1px;
+      }
+
+      /* Main title */
+      .main-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #00838f;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+      }
+
+      /* Chart section */
+      .chart-section {
+        margin-bottom: 15px;
+      }
+
+      .chart-title {
+        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
+      }
+
+      /* Stacked Bar Chart Container */
+      .stacked-chart-container {
+        width: 100%;
+        height: 420px;
+        margin: 15px 0;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(77, 208, 225, 0.03) 0%,
+          rgba(0, 188, 212, 0.02) 100%
+        );
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      #stackedChart {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Legend */
+      .chart-legend {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 15px 0;
+        flex-wrap: wrap;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: #37474f;
+        font-weight: 500;
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+      }
+
+      .legend-digital {
+        background: #2196f3;
+      }
+      .legend-information {
+        background: #ff9800;
+      }
+      .legend-physical {
+        background: #ffc107;
+      }
+      .legend-social {
+        background: #9e9e9e;
+      }
+      .legend-fraud {
+        background: #4dd0e1;
+      }
+
+      /* Description text */
+      .chart-description {
+        text-align: center;
+        font-size: 12px;
+        color: #4dd0e1;
+        margin: 15px 0;
+        line-height: 1.4;
+        font-weight: 500;
+      }
+
+      /* Section titles */
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #00838f;
+        margin: 20px 0 10px 0;
+        letter-spacing: 0.5px;
+      }
+
+      .subsection-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #4dd0e1;
+        margin: 15px 0 10px 0;
+      }
+
+      /* Category breakdown */
+      .category-section {
+        margin-top: 15px;
+      }
+
+      .category-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #4dd0e1;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .category-number {
+        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .category-details {
+        margin-left: 40px;
+        font-size: 12px;
+        color: #4dd0e1;
+        line-height: 1.6;
+      }
+
+      .category-details div {
+        margin-bottom: 3px;
+      }
+
+      /* Footer */
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
+        color: white;
+        padding: 8px 15mm;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-title {
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .page-number {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+      }
+
+      .page-number-circle {
+        background: white;
+        color: #00838f;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      @media print {
+        body {
+          background: white;
+          margin: 0;
+          padding: 0;
+        }
+        .a4-container {
+          width: 210mm;
+          height: 297mm;
+          box-shadow: none;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        .a4-container {
+          width: 100%;
+          height: auto;
+          min-height: 297mm;
+        }
+        .container {
+          padding: 10mm;
+        }
+        .main-title {
+          font-size: 18px;
+        }
+        .chart-legend {
+          gap: 10px;
+        }
+        .legend-item {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a4-container">
+      <div class="bg-decoration"></div>
+      <div class="container">
+        <header class="header">
+          <div class="logo">ZiSoft</div>
+        </header>
+
+        <main>
+          <h1 class="main-title">
+            RELATIVE AWARENESS DISTRIBUTION ACROSS<br />
+            CYBERSECURITY CATEGORIES BY DEPARTMENT
+          </h1>
+
+          <div class="chart-section">
+            <div class="chart-title">
+              Department Awareness Distribution per Relative Category
+            </div>
+
+            <div class="stacked-chart-container">
+              <div id="stackedChart"></div>
+            </div>
+
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="legend-color legend-digital"></div>
+                <span>Digital and Online Security</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color legend-information"></div>
+                <span>Information Protection and Data Security</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color legend-physical"></div>
+                <span>Physical and Environment Security</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color legend-social"></div>
+                <span>Social Engineering and Threat Awareness</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color legend-fraud"></div>
+                <span>Fraud</span>
+              </div>
+            </div>
+
+            <div class="chart-description">
+              This graph shows the relative distribution of correct answers by
+              departments over<br />
+              the 5 categories covered by ZiSoft.
+            </div>
+          </div>
+
+          <div class="section-title">
+            GRAPH FOR DEPARTMENT AND AWARENESS LEVEL (GREEN AND RED).
+          </div>
+
+          <div class="subsection-title">Category Breakdown</div>
+
+          <div class="category-section">
+            <div class="category-title">
+              <div class="category-number">01</div>
+              <span>Digital and Online Security</span>
+            </div>
+            <div class="category-details">
+              <div>Total Number of Questions</div>
+              <div>Total Number of Incorrect Answers</div>
+              <div>Total Number of Correct Answers</div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <div class="footer-title">
+            Cybersecurity Awareness Baseline Assessment Report
+          </div>
+          <div class="page-number">
+            <span>PAGE NO.</span>
+            <div class="page-number-circle">8</div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // Initialize amCharts when ready
+      am4core.ready(function () {
+        // Use animated theme
+        am4core.useTheme(am4themes_animated);
+
+        // Create horizontal stacked bar chart
+        drawStackedBarChart();
+      });
+
+      function drawStackedBarChart() {
+        try {
+          // Create XY chart
+          var chart = am4core.create('stackedChart', am4charts.XYChart);
+
+          // Set chart data
+          chart.data = [
+            {
+              department: 'Department #4',
+              digital: 35,
+              information: 20,
+              social: 10,
+              physical: 10,
+              fraud: 25,
+            },
+            {
+              department: 'Department #3',
+              digital: 10,
+              information: 25,
+              social: 10,
+              physical: 40,
+              fraud: 15,
+            },
+            {
+              department: 'Department #2',
+              digital: 25,
+              information: 20,
+              social: 5,
+              physical: 25,
+              fraud: 15,
+            },
+            {
+              department: 'Department #1',
+              digital: 10,
+              information: 25,
+              social: 20,
+              physical: 20,
+              fraud: 25,
+            },
+          ];
+
+          // Create category axis (Y-axis for horizontal bars)
+          var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+          categoryAxis.dataFields.category = 'department';
+          categoryAxis.renderer.grid.template.location = 0;
+          categoryAxis.renderer.inversed = true;
+          categoryAxis.renderer.labels.template.fontSize = 12;
+          categoryAxis.renderer.labels.template.fill = am4core.color('#4dd0e1');
+          categoryAxis.renderer.labels.template.fontWeight = '600';
+          categoryAxis.renderer.grid.template.strokeOpacity = 0;
+          categoryAxis.renderer.line.strokeOpacity = 0;
+
+          // Create value axis (X-axis for horizontal bars)
+          var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+          valueAxis.min = 0;
+          valueAxis.max = 100;
+          valueAxis.renderer.grid.template.strokeDasharray = '2,2';
+          valueAxis.renderer.grid.template.stroke = am4core.color('#e0e0e0');
+          valueAxis.renderer.grid.template.strokeOpacity = 1;
+          valueAxis.renderer.grid.template.strokeWidth = 1;
+          valueAxis.renderer.labels.template.fontSize = 11;
+          valueAxis.renderer.labels.template.fill = am4core.color('#37474f');
+          valueAxis.renderer.labels.template.fontWeight = '500';
+          valueAxis.renderer.line.strokeOpacity = 0;
+          valueAxis.renderer.labels.template.adapter.add(
+            'text',
+            function (text) {
+              return text + ' %';
+            }
+          );
+          // Set grid interval to 10%
+          valueAxis.renderer.minGridDistance = 30;
+          valueAxis.step = 10;
+
+          // Create series for each category
+          function createSeries(field, name, color) {
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.dataFields.valueX = field;
+            series.dataFields.categoryY = 'department';
+            series.name = name;
+            series.columns.template.fill = am4core.color(color);
+            series.columns.template.stroke = am4core.color('#ffffff');
+            series.columns.template.strokeWidth = 1;
+            series.columns.template.strokeOpacity = 0.8;
+            series.stacked = true;
+            series.columns.template.height = am4core.percent(60);
+
+            // Add value labels
+            var labelBullet = series.bullets.push(new am4charts.LabelBullet());
+            labelBullet.label.text = '{valueX}%';
+            labelBullet.label.fontSize = 11;
+            labelBullet.label.fontWeight = '600';
+            labelBullet.label.fill = am4core.color('#ffffff');
+            labelBullet.label.hideOversized = false;
+            labelBullet.label.truncate = false;
+            labelBullet.locationX = 0.5;
+
+            // Hide labels for small values
+            labelBullet.label.adapter.add('text', function (text, target) {
+              if (target.dataItem && target.dataItem.valueX < 8) {
+                return '';
+              }
+              return text;
+            });
+
+            return series;
+          }
+
+          // Create all series with matching colors
+          createSeries('digital', 'Digital and Online Security', '#2196f3');
+          createSeries(
+            'information',
+            'Information Protection and Data Security',
+            '#ff9800'
+          );
+          createSeries(
+            'social',
+            'Social Engineering and Threat Awareness',
+            '#9e9e9e'
+          );
+          createSeries(
+            'physical',
+            'Physical and Environment Security',
+            '#ffc107'
+          );
+          createSeries('fraud', 'Fraud', '#4dd0e1');
+
+          // Disable cursor
+          chart.cursor = undefined;
+
+          // Add subtle animation
+          chart.events.on('ready', function () {
+            chart.series.each(function (series) {
+              series.columns.template.defaultState.transitionDuration = 1000;
+            });
+          });
+        } catch (error) {
+          console.error('Error drawing stacked bar chart:', error);
+          document.getElementById('stackedChart').innerHTML =
+            '<div style="text-align: center; padding: 50px; color: #00838f; font-size: 16px;">Stacked Bar Chart Loading...</div>';
+        }
+      }
+
+      // Fallback if amCharts fails to load
+      setTimeout(() => {
+        if (typeof am4core === 'undefined') {
+          console.warn('amCharts failed to load, using fallback');
+          document.getElementById('stackedChart').innerHTML =
+            '<div style="text-align: center; padding: 50px; color: #00838f; font-size: 16px;">Horizontal Stacked Bar Chart (amCharts required)</div>';
+        }
+      }, 10000);
+    </script>
+  </body>
+</html>
