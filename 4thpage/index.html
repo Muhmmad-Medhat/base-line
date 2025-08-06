@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cybersecurity Awareness Report - Executive Summary</title>
-    <script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- amCharts Resources -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
     <style>
       * {
         margin: 0;
@@ -121,17 +122,36 @@
 
       .donut-wrapper {
         position: relative;
-        width: 300px;
-        height: 180px;
+        width: 400px;
+        height: 220px;
         margin: 0 auto 20px auto;
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
+      .donut-wrapper::before {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 320px;
+        height: 60px;
+        background: radial-gradient(
+          ellipse,
+          rgba(0, 131, 143, 0.3) 0%,
+          rgba(0, 131, 143, 0.1) 40%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(8px);
+      }
+
       #participationChart {
-        width: 300px;
-        height: 180px;
+        width: 400px;
+        height: 220px;
       }
 
       /* Chart labels */
@@ -213,17 +233,36 @@
 
       .score-donut-wrapper {
         position: relative;
-        width: 200px;
-        height: 140px;
+        width: 400px;
+        height: 220px;
         margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
+      .score-donut-wrapper::before {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 320px;
+        height: 60px;
+        background: radial-gradient(
+          ellipse,
+          rgba(0, 131, 143, 0.3) 0%,
+          rgba(0, 131, 143, 0.1) 40%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(8px);
+      }
+
       #scoreChart {
-        width: 200px;
-        height: 140px;
+        width: 400px;
+        height: 220px;
       }
 
       /* Custom styling for better pixel perfect match */
@@ -395,71 +434,85 @@
     </div>
 
     <script type="text/javascript">
-      // Load Google Charts with proper error handling
-      google.charts.load('current', { packages: ['corechart'] });
-      google.charts.setOnLoadCallback(drawCharts);
+      // Initialize amCharts when ready
+      am4core.ready(function () {
+        // Use animated theme
+        am4core.useTheme(am4themes_animated);
 
-      function drawCharts() {
-        // Add delay to ensure DOM is ready
-        setTimeout(() => {
-          drawParticipationChart();
-          drawScoreChart();
-        }, 100);
-      }
+        // Initialize both charts
+        drawParticipationChart();
+        drawScoreChart();
+      });
 
       function drawParticipationChart() {
         try {
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Category');
-          data.addColumn('number', 'Employees');
-          data.addRows([
-            ['Completed Assessment', 187],
-            ['Did not finish', 26],
-          ]);
-
-          var options = {
-            title: '',
-            pieHole: 0.5,
-            is3D: false, // Using flat design for better control
-            colors: ['#4dd0e1', '#00838f'],
-            backgroundColor: 'transparent',
-            legend: 'none',
-            pieSliceText: 'value',
-            pieSliceTextStyle: {
-              color: 'white',
-              fontSize: 18,
-              bold: true,
-              fontName: 'Segoe UI',
-            },
-            chartArea: {
-              left: 30,
-              top: 30,
-              width: '75%',
-              height: '75%',
-            },
-            width: 300,
-            height: 180,
-            pieSliceBorderColor: 'transparent',
-            enableInteractivity: false,
-            is3D: true,
-          };
-
-          var chart = new google.visualization.PieChart(
-            document.getElementById('participationChart')
+          // Create 3D pie chart
+          var chart = am4core.create(
+            'participationChart',
+            am4charts.PieChart3D
           );
 
-          // Add custom labels after chart renders
-          google.visualization.events.addListener(chart, 'ready', function () {
-            addCustomLabels('participationChart', [
-              { value: '26', position: 'left' },
-              { value: '187', position: 'right' },
-            ]);
-          });
+          // Set chart data with rotation to align segments properly
+          chart.data = [
+            {
+              category: 'Did not finish',
+              value: 26,
+              color: am4core.color('#00838f'),
+            },
+            {
+              category: 'Completed Assessment',
+              value: 187,
+              color: am4core.color('#4dd0e1'),
+            },
+          ];
 
-          chart.draw(data, options);
+          // Set inner radius to create donut effect
+          chart.innerRadius = am4core.percent(50);
+
+          // Configure 3D settings
+          chart.depth3D = 30;
+          chart.angle = 15;
+
+          // Rotate chart to the left to align segments with labels
+          chart.startAngle = -135;
+          chart.endAngle = 225;
+
+          // Hide legend
+          chart.legend = undefined;
+
+          // Create pie series
+          var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+          pieSeries.dataFields.value = 'value';
+          pieSeries.dataFields.category = 'category';
+
+          // Configure slice appearance
+          pieSeries.slices.template.propertyFields.fill = 'color';
+          pieSeries.slices.template.stroke = am4core.color('#FFFFFF');
+          pieSeries.slices.template.strokeWidth = 8;
+          pieSeries.slices.template.strokeOpacity = 0;
+
+          // Configure labels - ensure they always appear
+          pieSeries.labels.template.text = '{value}';
+          pieSeries.labels.template.fontSize = 18;
+          pieSeries.labels.template.fontWeight = 'bold';
+          pieSeries.labels.template.fill = am4core.color('#FFFFFF');
+          pieSeries.labels.template.fontFamily = 'Segoe UI';
+          pieSeries.labels.template.disabled = false;
+
+          // Hide ticks
+          pieSeries.ticks.template.disabled = true;
+
+          // Add custom external labels after chart is ready
+          chart.events.on('ready', function () {
+            setTimeout(() => {
+              addCustomLabels('participationChart', [
+                { value: '26', position: 'left' },
+                { value: '187', position: 'right' },
+              ]);
+            }, 500);
+          });
         } catch (error) {
           console.error('Error drawing participation chart:', error);
-          // Fallback to simple text display
           document.getElementById('participationChart').innerHTML =
             '<div style="text-align: center; padding: 50px; color: #00838f;">Chart Loading...</div>';
         }
@@ -467,50 +520,58 @@
 
       function drawScoreChart() {
         try {
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Category');
-          data.addColumn('number', 'Percentage');
-          data.addRows([
-            ['Achieved', 77],
-            ['Remaining', 23],
-          ]);
+          // Create 3D pie chart
+          var chart = am4core.create('scoreChart', am4charts.PieChart3D);
 
-          var options = {
-            title: '',
-            pieHole: 0.5,
-            is3D: false,
-            colors: ['#4dd0e1', '#00838f'],
-            backgroundColor: 'transparent',
-            legend: 'none',
-            pieSliceText: 'none',
-            tooltip: { trigger: 'none' },
-            chartArea: {
-              left: 20,
-              top: 20,
-              width: '70%',
-              height: '80%',
+          // Set chart data
+          chart.data = [
+            {
+              category: 'Achieved',
+              value: 77,
+              color: am4core.color('#4dd0e1'),
             },
-            width: 200,
-            height: 140,
-            pieSliceBorderColor: 'transparent',
-            enableInteractivity: false,
-            is3D: true,
-          };
+            {
+              category: 'Remaining',
+              value: 23,
+              color: am4core.color('#00838f'),
+            },
+          ];
 
-          var chart = new google.visualization.PieChart(
-            document.getElementById('scoreChart')
-          );
+          // Set inner radius to create donut effect
+          chart.innerRadius = am4core.percent(60);
 
-          // Add percentage label after chart is drawn
-          google.visualization.events.addListener(chart, 'ready', function () {
-            addScoreLabel();
+          // Configure 3D settings
+          chart.depth3D = 25;
+          chart.angle = 15;
+
+          // Hide legend
+          chart.legend = undefined;
+
+          // Create pie series
+          var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+          pieSeries.dataFields.value = 'value';
+          pieSeries.dataFields.category = 'category';
+
+          // Configure slice appearance
+          pieSeries.slices.template.propertyFields.fill = 'color';
+          pieSeries.slices.template.stroke = am4core.color('#FFFFFF');
+          pieSeries.slices.template.strokeWidth = 8;
+          pieSeries.slices.template.strokeOpacity = 0;
+
+          // Hide labels and ticks for score chart
+          pieSeries.labels.template.disabled = true;
+          pieSeries.ticks.template.disabled = true;
+
+          // Add custom score label after chart is ready
+          chart.events.on('ready', function () {
+            setTimeout(() => {
+              addScoreLabel();
+            }, 500);
           });
-
-          chart.draw(data, options);
         } catch (error) {
           console.error('Error drawing score chart:', error);
           document.getElementById('scoreChart').innerHTML =
-            '<div style="text-align: center; padding: 40px; color: #00838f;">77%</div>';
+            '<div style="text-align: center; padding: 40px; color: #00838f; font-size: 28px; font-weight: bold;">77%</div>';
         }
       }
 
@@ -524,6 +585,7 @@
         existingLabels.forEach((label) => label.remove());
 
         labels.forEach((label) => {
+          // Create label element
           const labelElement = document.createElement('div');
           labelElement.className = 'custom-chart-label';
           labelElement.innerHTML = label.value;
@@ -531,21 +593,37 @@
           labelElement.style.fontSize = '24px';
           labelElement.style.fontWeight = '700';
           labelElement.style.color = '#00838f';
-          labelElement.style.top = '20px';
+          labelElement.style.textShadow = '0 2px 4px rgba(0, 131, 143, 0.3)';
 
+          // Create dotted line extending from chart to label
           const lineElement = document.createElement('div');
           lineElement.className = 'custom-chart-label';
           lineElement.style.position = 'absolute';
           lineElement.style.borderTop = '2px dotted #4dd0e1';
-          lineElement.style.width = '40px';
-          lineElement.style.top = '35px';
+          lineElement.style.height = '0px';
 
           if (label.position === 'left') {
-            labelElement.style.left = '-50px';
-            lineElement.style.left = '-40px';
+            // Position for left side (26)
+            labelElement.style.left = '-80px';
+            labelElement.style.top = '50%';
+            labelElement.style.transform = 'translateY(-50%)';
+            
+            // Dotted line from chart edge to label
+            lineElement.style.left = '20px';
+            lineElement.style.top = '50%';
+            lineElement.style.width = '100px';
+            lineElement.style.transform = 'translateY(-50%)';
           } else {
-            labelElement.style.right = '-50px';
-            lineElement.style.right = '-40px';
+            // Position for right side (187)
+            labelElement.style.right = '-80px';
+            labelElement.style.top = '50%';
+            labelElement.style.transform = 'translateY(-50%)';
+            
+            // Dotted line from chart edge to label
+            lineElement.style.right = '20px';
+            lineElement.style.top = '50%';
+            lineElement.style.width = '100px';
+            lineElement.style.transform = 'translateY(-50%)';
           }
 
           chartContainer.appendChild(labelElement);
@@ -571,6 +649,7 @@
         percentageLabel.style.fontSize = '28px';
         percentageLabel.style.fontWeight = '700';
         percentageLabel.style.color = '#00838f';
+        percentageLabel.style.textShadow = '0 2px 4px rgba(0, 131, 143, 0.3)';
 
         const dottedLine = document.createElement('div');
         dottedLine.className = 'score-label';
@@ -585,27 +664,16 @@
         chartContainer.appendChild(dottedLine);
       }
 
-      // Redraw charts on window resize with debouncing
-      let resizeTimeout;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          if (typeof google !== 'undefined' && google.charts) {
-            drawCharts();
-          }
-        }, 250);
-      });
-
-      // Fallback if Google Charts fails to load
+      // Fallback if amCharts fails to load
       setTimeout(() => {
-        if (typeof google === 'undefined' || !google.charts) {
-          console.warn('Google Charts failed to load, using fallback');
+        if (typeof am4core === 'undefined') {
+          console.warn('amCharts failed to load, using fallback');
           document.getElementById('participationChart').innerHTML =
             '<div style="text-align: center; padding: 50px;"><div style="color: #4dd0e1; font-size: 24px; font-weight: bold;">187</div><div style="color: #00838f; margin-top: 10px;">Completed</div></div>';
           document.getElementById('scoreChart').innerHTML =
             '<div style="text-align: center; padding: 40px; color: #00838f; font-size: 28px; font-weight: bold;">77%</div>';
         }
-      }, 5000);
+      }, 10000);
     </script>
   </body>
 </html>
