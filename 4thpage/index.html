@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Awareness Report - Executive Summary</title>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+        margin: 0;
+        padding: 20px;
+        position: relative;
+      }
+
+      /* A4 Paper container */
+      .a4-container {
+        width: 210mm;
+        height: 297mm;
+        max-width: 210mm;
+        max-height: 297mm;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Background decorative elements */
+      .bg-decoration {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(
+          135deg,
+          #00bcd4 0%,
+          #4dd0e1 50%,
+          #b3e5fc 100%
+        );
+        border-radius: 50%;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        padding: 20mm;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 300;
+        color: #00bcd4;
+        letter-spacing: -1px;
+      }
+
+      /* Main title */
+      .main-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #00838f;
+        margin-bottom: 30px;
+        letter-spacing: 1.5px;
+      }
+
+      /* Content sections */
+      .content-section {
+        margin-bottom: 25px;
+      }
+
+      .section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #4dd0e1;
+        margin-bottom: 8px;
+      }
+
+      .section-text {
+        font-size: 12px;
+        line-height: 1.5;
+        color: #37474f;
+        margin-bottom: 15px;
+      }
+
+      .highlight-number {
+        color: #4dd0e1;
+        font-weight: 700;
+      }
+
+      /* Donut chart container */
+      .chart-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+      }
+
+      .donut-wrapper {
+        position: relative;
+        width: 300px;
+        height: 180px;
+        margin: 0 auto 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #participationChart {
+        width: 300px;
+        height: 180px;
+      }
+
+      /* Chart labels */
+      .chart-labels {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 10px;
+      }
+
+      .label-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: #37474f;
+      }
+
+      .label-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+
+      .label-completed {
+        background: #4dd0e1;
+      }
+
+      .label-incomplete {
+        background: #00838f;
+      }
+
+      /* Key metrics section */
+      .key-metrics {
+        margin: 35px 0;
+      }
+
+      .metrics-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #4dd0e1;
+        margin-bottom: 25px;
+      }
+
+      .overall-awareness {
+        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: inline-block;
+        box-shadow: 0 3px 12px rgba(77, 208, 225, 0.3);
+      }
+
+      .score-text {
+        font-size: 13px;
+        color: #37474f;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .score-highlight {
+        color: #00838f;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      /* Large score chart */
+      .score-chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 20px 0;
+      }
+
+      .score-donut-wrapper {
+        position: relative;
+        width: 200px;
+        height: 140px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #scoreChart {
+        width: 200px;
+        height: 140px;
+      }
+
+      /* Custom styling for better pixel perfect match */
+      .custom-chart-label {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .score-label {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Footer */
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
+        color: white;
+        padding: 10px 20mm;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-title {
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .page-number {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+      }
+
+      .page-number-circle {
+        background: white;
+        color: #00838f;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      @media print {
+        body {
+          background: white;
+          margin: 0;
+          padding: 0;
+        }
+
+        .a4-container {
+          width: 210mm;
+          height: 297mm;
+          box-shadow: none;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .a4-container {
+          width: 100%;
+          height: auto;
+          min-height: 297mm;
+        }
+
+        .container {
+          padding: 10mm;
+        }
+
+        .main-title {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a4-container">
+      <div class="bg-decoration"></div>
+
+      <div class="container">
+        <header class="header">
+          <div class="logo">ZiSoft</div>
+        </header>
+
+        <main>
+          <h1 class="main-title">EXECUTIVE SUMMARY</h1>
+
+          <div class="content-section">
+            <h2 class="section-title">Assessment Participation</h2>
+            <p class="section-text">
+              The Cybersecurity Awareness Baseline Assessment engaged a total of
+              <span class="highlight-number">213 employees</span>, with
+              <span class="highlight-number">187 employees</span> fully
+              completing the assessment, resulting in a participation rate of
+              <span class="highlight-number">87.79 %</span>.
+            </p>
+          </div>
+
+          <div class="chart-container">
+            <div class="donut-wrapper">
+              <div id="participationChart"></div>
+            </div>
+
+            <div class="chart-labels">
+              <div class="label-item">
+                <div class="label-color label-completed"></div>
+                <span>Completed Assessment</span>
+              </div>
+              <div class="label-item">
+                <div class="label-color label-incomplete"></div>
+                <span>Did not finish</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-section">
+            <p class="section-text">
+              The assessment spanned
+              <span class="highlight-number">16 departments</span>, with a
+              comprehensive question set of
+              <span class="highlight-number">54 questions</span> over
+              <span class="highlight-number">18 domains</span> aimed at
+              evaluating core cybersecurity knowledge and behaviors under
+              <span class="highlight-number">5 key categories</span>.
+            </p>
+          </div>
+
+          <div class="key-metrics">
+            <h2 class="metrics-title">Key metrics and insights</h2>
+
+            <div class="overall-awareness">Overall Recorded Awareness</div>
+
+            <p class="score-text">
+              <span class="score-highlight"
+                >The average assessment score achieved across participating
+                employees was 77 %.</span
+              >
+            </p>
+
+            <div class="score-chart-container">
+              <div class="score-donut-wrapper">
+                <div id="scoreChart"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <div class="footer-title">
+            Cybersecurity Awareness Baseline Assessment Report
+          </div>
+          <div class="page-number">
+            <span>PAGE NO.</span>
+            <div class="page-number-circle">4</div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // Load Google Charts with proper error handling
+      google.charts.load('current', { packages: ['corechart'] });
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        // Add delay to ensure DOM is ready
+        setTimeout(() => {
+          drawParticipationChart();
+          drawScoreChart();
+        }, 100);
+      }
+
+      function drawParticipationChart() {
+        try {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Category');
+          data.addColumn('number', 'Employees');
+          data.addRows([
+            ['Completed Assessment', 187],
+            ['Did not finish', 26],
+          ]);
+
+          var options = {
+            title: '',
+            pieHole: 0.5,
+            is3D: false, // Using flat design for better control
+            colors: ['#4dd0e1', '#00838f'],
+            backgroundColor: 'transparent',
+            legend: 'none',
+            pieSliceText: 'value',
+            pieSliceTextStyle: {
+              color: 'white',
+              fontSize: 18,
+              bold: true,
+              fontName: 'Segoe UI',
+            },
+            chartArea: {
+              left: 30,
+              top: 30,
+              width: '75%',
+              height: '75%',
+            },
+            width: 300,
+            height: 180,
+            pieSliceBorderColor: 'transparent',
+            enableInteractivity: false,
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(
+            document.getElementById('participationChart')
+          );
+
+          // Add custom labels after chart renders
+          google.visualization.events.addListener(chart, 'ready', function () {
+            addCustomLabels('participationChart', [
+              { value: '26', position: 'left' },
+              { value: '187', position: 'right' },
+            ]);
+          });
+
+          chart.draw(data, options);
+        } catch (error) {
+          console.error('Error drawing participation chart:', error);
+          // Fallback to simple text display
+          document.getElementById('participationChart').innerHTML =
+            '<div style="text-align: center; padding: 50px; color: #00838f;">Chart Loading...</div>';
+        }
+      }
+
+      function drawScoreChart() {
+        try {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Category');
+          data.addColumn('number', 'Percentage');
+          data.addRows([
+            ['Achieved', 77],
+            ['Remaining', 23],
+          ]);
+
+          var options = {
+            title: '',
+            pieHole: 0.5,
+            is3D: false,
+            colors: ['#4dd0e1', '#00838f'],
+            backgroundColor: 'transparent',
+            legend: 'none',
+            pieSliceText: 'none',
+            tooltip: { trigger: 'none' },
+            chartArea: {
+              left: 20,
+              top: 20,
+              width: '70%',
+              height: '80%',
+            },
+            width: 200,
+            height: 140,
+            pieSliceBorderColor: 'transparent',
+            enableInteractivity: false,
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(
+            document.getElementById('scoreChart')
+          );
+
+          // Add percentage label after chart is drawn
+          google.visualization.events.addListener(chart, 'ready', function () {
+            addScoreLabel();
+          });
+
+          chart.draw(data, options);
+        } catch (error) {
+          console.error('Error drawing score chart:', error);
+          document.getElementById('scoreChart').innerHTML =
+            '<div style="text-align: center; padding: 40px; color: #00838f;">77%</div>';
+        }
+      }
+
+      function addCustomLabels(chartId, labels) {
+        const chartContainer = document.getElementById(chartId).parentElement;
+
+        // Remove existing custom labels
+        const existingLabels = chartContainer.querySelectorAll(
+          '.custom-chart-label'
+        );
+        existingLabels.forEach((label) => label.remove());
+
+        labels.forEach((label) => {
+          const labelElement = document.createElement('div');
+          labelElement.className = 'custom-chart-label';
+          labelElement.innerHTML = label.value;
+          labelElement.style.position = 'absolute';
+          labelElement.style.fontSize = '24px';
+          labelElement.style.fontWeight = '700';
+          labelElement.style.color = '#00838f';
+          labelElement.style.top = '20px';
+
+          const lineElement = document.createElement('div');
+          lineElement.className = 'custom-chart-label';
+          lineElement.style.position = 'absolute';
+          lineElement.style.borderTop = '2px dotted #4dd0e1';
+          lineElement.style.width = '40px';
+          lineElement.style.top = '35px';
+
+          if (label.position === 'left') {
+            labelElement.style.left = '-50px';
+            lineElement.style.left = '-40px';
+          } else {
+            labelElement.style.right = '-50px';
+            lineElement.style.right = '-40px';
+          }
+
+          chartContainer.appendChild(labelElement);
+          chartContainer.appendChild(lineElement);
+        });
+      }
+
+      function addScoreLabel() {
+        const chartContainer =
+          document.getElementById('scoreChart').parentElement;
+
+        // Remove existing labels
+        const existingLabels = chartContainer.querySelectorAll('.score-label');
+        existingLabels.forEach((label) => label.remove());
+
+        const percentageLabel = document.createElement('div');
+        percentageLabel.className = 'score-label';
+        percentageLabel.innerHTML = '77 %';
+        percentageLabel.style.position = 'absolute';
+        percentageLabel.style.right = '-60px';
+        percentageLabel.style.top = '50%';
+        percentageLabel.style.transform = 'translateY(-50%)';
+        percentageLabel.style.fontSize = '28px';
+        percentageLabel.style.fontWeight = '700';
+        percentageLabel.style.color = '#00838f';
+
+        const dottedLine = document.createElement('div');
+        dottedLine.className = 'score-label';
+        dottedLine.style.position = 'absolute';
+        dottedLine.style.right = '-55px';
+        dottedLine.style.top = '50%';
+        dottedLine.style.transform = 'translateY(-50%)';
+        dottedLine.style.borderTop = '2px dotted #4dd0e1';
+        dottedLine.style.width = '35px';
+
+        chartContainer.appendChild(percentageLabel);
+        chartContainer.appendChild(dottedLine);
+      }
+
+      // Redraw charts on window resize with debouncing
+      let resizeTimeout;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          if (typeof google !== 'undefined' && google.charts) {
+            drawCharts();
+          }
+        }, 250);
+      });
+
+      // Fallback if Google Charts fails to load
+      setTimeout(() => {
+        if (typeof google === 'undefined' || !google.charts) {
+          console.warn('Google Charts failed to load, using fallback');
+          document.getElementById('participationChart').innerHTML =
+            '<div style="text-align: center; padding: 50px;"><div style="color: #4dd0e1; font-size: 24px; font-weight: bold;">187</div><div style="color: #00838f; margin-top: 10px;">Completed</div></div>';
+          document.getElementById('scoreChart').innerHTML =
+            '<div style="text-align: center; padding: 40px; color: #00838f; font-size: 28px; font-weight: bold;">77%</div>';
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
