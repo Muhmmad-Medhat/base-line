@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cybersecurity Awareness Report - Page 6</title>
-    <!-- amCharts Resources -->
-    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
     <style>
       * {
         margin: 0;
@@ -243,6 +239,27 @@
         height: 70px;
         margin-bottom: 8px;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .progress-circle svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+        filter: drop-shadow(0 2px 4px rgba(77, 208, 225, 0.2));
+      }
+
+      .progress-circle .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        font-weight: bold;
+        color: #4dd0e1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
 
       .progress-label {
@@ -390,27 +407,123 @@
 
               <div class="progress-charts">
                 <div class="progress-item">
-                  <div class="progress-circle" id="progress1"></div>
+                  <div class="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e0e0e0"
+                        stroke-width="3" />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4dd0e1"
+                        stroke-width="3"
+                        stroke-dasharray="44, 100"
+                        stroke-linecap="round" />
+                    </svg>
+                    <div class="progress-text">44%</div>
+                  </div>
                   <div class="progress-label">Safe Browsing</div>
                 </div>
                 <div class="progress-item">
-                  <div class="progress-circle" id="progress2"></div>
+                  <div class="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e0e0e0"
+                        stroke-width="3" />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4dd0e1"
+                        stroke-width="3"
+                        stroke-dasharray="73, 100"
+                        stroke-linecap="round" />
+                    </svg>
+                    <div class="progress-text">73%</div>
+                  </div>
                   <div class="progress-label">Mobile Security</div>
                 </div>
                 <div class="progress-item">
-                  <div class="progress-circle" id="progress3"></div>
+                  <div class="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e0e0e0"
+                        stroke-width="3" />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4dd0e1"
+                        stroke-width="3"
+                        stroke-dasharray="51, 100"
+                        stroke-linecap="round" />
+                    </svg>
+                    <div class="progress-text">51%</div>
+                  </div>
                   <div class="progress-label">Online Shopping</div>
                 </div>
                 <div class="progress-item">
-                  <div class="progress-circle" id="progress4"></div>
+                  <div class="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e0e0e0"
+                        stroke-width="3" />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4dd0e1"
+                        stroke-width="3"
+                        stroke-dasharray="63, 100"
+                        stroke-linecap="round" />
+                    </svg>
+                    <div class="progress-text">63%</div>
+                  </div>
                   <div class="progress-label">Email Security</div>
                 </div>
                 <div class="progress-item">
-                  <div class="progress-circle" id="progress5"></div>
+                  <div class="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e0e0e0"
+                        stroke-width="3" />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4dd0e1"
+                        stroke-width="3"
+                        stroke-dasharray="87, 100"
+                        stroke-linecap="round" />
+                    </svg>
+                    <div class="progress-text">87%</div>
+                  </div>
                   <div class="progress-label">Wi-Fi Security</div>
                 </div>
                 <div class="progress-item">
-                  <div class="progress-circle" id="progress6"></div>
+                  <div class="progress-circle">
+                    <svg viewBox="0 0 36 36">
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#e0e0e0"
+                        stroke-width="3" />
+                      <path
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#4dd0e1"
+                        stroke-width="3"
+                        stroke-dasharray="29, 100"
+                        stroke-linecap="round" />
+                    </svg>
+                    <div class="progress-text">29%</div>
+                  </div>
                   <div class="progress-label">IoT Security</div>
                 </div>
               </div>
@@ -430,6 +543,9 @@
       </div>
     </div>
 
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
     <script type="text/javascript">
       // Initialize amCharts when ready
       am4core.ready(function () {
@@ -438,7 +554,6 @@
 
         // Create 3D column chart
         drawColumnChart();
-        drawProgressCharts();
       });
 
       function drawColumnChart() {
@@ -557,62 +672,6 @@
           document.getElementById('columnChart').innerHTML =
             '<div style="text-align: center; padding: 50px; color: #00838f;">3D Chart Loading...</div>';
         }
-      }
-
-      function drawProgressCharts() {
-        const progressData = [
-          { id: 'progress1', value: 44, label: '44 %' },
-          { id: 'progress2', value: 73, label: '73 %' },
-          { id: 'progress3', value: 51, label: '51 %' },
-          { id: 'progress4', value: 63, label: '63 %' },
-          { id: 'progress5', value: 87, label: '87 %' },
-          { id: 'progress6', value: 29, label: '29 %' },
-        ];
-
-        progressData.forEach((item) => {
-          try {
-            var chart = am4core.create(item.id, am4charts.PieChart);
-
-            chart.data = [
-              {
-                category: 'Achieved',
-                value: item.value,
-                color: am4core.color('#4dd0e1'),
-              },
-              {
-                category: 'Remaining',
-                value: 100 - item.value,
-                color: am4core.color('#e0e0e0'),
-              },
-            ];
-
-            chart.innerRadius = am4core.percent(70);
-            chart.legend = undefined;
-
-            var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.value = 'value';
-            pieSeries.dataFields.category = 'category';
-            pieSeries.slices.template.propertyFields.fill = 'color';
-            pieSeries.slices.template.stroke = am4core.color('#FFFFFF');
-            pieSeries.slices.template.strokeWidth = 2;
-            pieSeries.labels.template.disabled = true;
-            pieSeries.ticks.template.disabled = true;
-
-            // Add center label
-            var label = chart.seriesContainer.createChild(am4core.Label);
-            label.text = item.label;
-            label.horizontalCenter = 'middle';
-            label.verticalCenter = 'middle';
-            label.fontSize = 12;
-            label.fontWeight = 'bold';
-            label.fill = am4core.color('#4dd0e1');
-          } catch (error) {
-            console.error(`Error drawing progress chart ${item.id}:`, error);
-            document.getElementById(
-              item.id
-            ).innerHTML = `<div style="text-align: center; padding: 20px; color: #4dd0e1; font-weight: bold;">${item.label}</div>`;
-          }
-        });
       }
 
       // Fallback if amCharts fails to load
