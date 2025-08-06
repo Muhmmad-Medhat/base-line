@@ -452,17 +452,17 @@
             am4charts.PieChart3D
           );
 
-          // Set chart data with rotation to align segments properly
+          // Set chart data
           chart.data = [
-            {
-              category: 'Did not finish',
-              value: 26,
-              color: am4core.color('#00838f'),
-            },
             {
               category: 'Completed Assessment',
               value: 187,
               color: am4core.color('#4dd0e1'),
+            },
+            {
+              category: 'Did not finish',
+              value: 26,
+              color: am4core.color('#00838f'),
             },
           ];
 
@@ -472,10 +472,6 @@
           // Configure 3D settings
           chart.depth3D = 30;
           chart.angle = 15;
-
-          // Rotate chart to the left to align segments with labels
-          chart.startAngle = -135;
-          chart.endAngle = 225;
 
           // Hide legend
           chart.legend = undefined;
@@ -585,7 +581,6 @@
         existingLabels.forEach((label) => label.remove());
 
         labels.forEach((label) => {
-          // Create label element
           const labelElement = document.createElement('div');
           labelElement.className = 'custom-chart-label';
           labelElement.innerHTML = label.value;
@@ -593,37 +588,22 @@
           labelElement.style.fontSize = '24px';
           labelElement.style.fontWeight = '700';
           labelElement.style.color = '#00838f';
+          labelElement.style.top = '20px';
           labelElement.style.textShadow = '0 2px 4px rgba(0, 131, 143, 0.3)';
 
-          // Create dotted line extending from chart to label
           const lineElement = document.createElement('div');
           lineElement.className = 'custom-chart-label';
           lineElement.style.position = 'absolute';
           lineElement.style.borderTop = '2px dotted #4dd0e1';
-          lineElement.style.height = '0px';
+          lineElement.style.width = '40px';
+          lineElement.style.top = '35px';
 
           if (label.position === 'left') {
-            // Position for left side (26)
-            labelElement.style.left = '-80px';
-            labelElement.style.top = '50%';
-            labelElement.style.transform = 'translateY(-50%)';
-            
-            // Dotted line from chart edge to label
-            lineElement.style.left = '20px';
-            lineElement.style.top = '50%';
-            lineElement.style.width = '100px';
-            lineElement.style.transform = 'translateY(-50%)';
+            labelElement.style.left = '-50px';
+            lineElement.style.left = '-40px';
           } else {
-            // Position for right side (187)
-            labelElement.style.right = '-80px';
-            labelElement.style.top = '50%';
-            labelElement.style.transform = 'translateY(-50%)';
-            
-            // Dotted line from chart edge to label
-            lineElement.style.right = '20px';
-            lineElement.style.top = '50%';
-            lineElement.style.width = '100px';
-            lineElement.style.transform = 'translateY(-50%)';
+            labelElement.style.right = '-50px';
+            lineElement.style.right = '-40px';
           }
 
           chartContainer.appendChild(labelElement);
