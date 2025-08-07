@@ -149,9 +149,9 @@
     rgba(0, 188, 212, 0.02) 100%
   );
   border-radius: var(--radius-medium);
-  height: 250px;
+  height: 350px; /* Increased height for better visualization */
   margin: var(--spacing-md) 0;
-  padding: var(--spacing-sm);
+  padding: var(--spacing-md); /* Increased padding for better chart visibility */
   position: relative;
   width: 100%;
 }

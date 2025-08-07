@@ -108,10 +108,10 @@ function drawDepartmentChart() {
     chart.depth3D = 60;
 
     // Add padding to accommodate labels
-    chart.paddingTop = 25;
-    chart.paddingBottom = 35;
-    chart.paddingLeft = 15;
-    chart.paddingRight = 15;
+    chart.paddingTop = 30;
+    chart.paddingBottom = 50; /* Increased bottom padding for better label visibility */
+    chart.paddingLeft = 25; /* Increased left padding for Y-axis labels */
+    chart.paddingRight = 25;
 
     // Create category axis
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -134,7 +134,8 @@ function drawDepartmentChart() {
     var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.min = 0;
     valueAxis.max = 100;
-    valueAxis.renderer.labels.template.fontSize = 11;
+    valueAxis.strictMinMax = true;
+    valueAxis.renderer.labels.template.fontSize = 12;
     valueAxis.renderer.labels.template.fill = am4core.color('#37474f');
     valueAxis.renderer.labels.template.fontWeight = '500';
     valueAxis.renderer.grid.template.strokeDasharray = '2,2';
@@ -142,9 +143,9 @@ function drawDepartmentChart() {
     valueAxis.renderer.grid.template.strokeOpacity = 1;
     valueAxis.renderer.line.strokeOpacity = 0;
 
-    // Set grid interval to 5 units (0, 5, 10, 15, 20, ..., 100)
-    valueAxis.renderer.minGridDistance = 20;
-    valueAxis.step = 5;
+    // Set step interval to 10 units (0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
+    valueAxis.step = 10;
+    valueAxis.renderer.minGridDistance = 10;
 
     // Create column series
     var series = chart.series.push(new am4charts.ColumnSeries3D());
