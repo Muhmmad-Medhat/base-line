@@ -7,38 +7,14 @@
  * Contains domain breakdown and departmental analysis sections
  * 
  * Components included:
- * - .main-title (page heading)
- * - .description-text (introductory text)
  * - .domain-section (domain analysis container)
  * - .department-section (department comparison container)
- * - .chart-container (chart layout components)
+ * - Custom chart layouts specific to page 10
  */
-
-/* ==========================================================================
-   Base Layout Styles
-   ========================================================================== */
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: var(--a4-padding-large);
-  position: relative;
-  width: 100%;
-  z-index: var(--z-content);
-}
 
 /* ==========================================================================
    Typography & Text Components
    ========================================================================== */
-
-.main-title {
-  color: var(--color-primary);
-  font-size: 28px;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: 1px;
-  margin-bottom: var(--spacing-md);
-}
 
 .description-text {
   color: var(--color-secondary);
@@ -198,42 +174,10 @@
 }
 
 /* ==========================================================================
-   Print Styles
-   ========================================================================== */
-
-@media print {
-  .container {
-    padding: var(--a4-padding);
-  }
-
-  .main-title {
-    font-size: 24px;
-  }
-
-  .domain-section .chart-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .domain-section .chart-legend {
-    margin-left: 0;
-    margin-top: var(--spacing-md);
-  }
-}
-
-/* ==========================================================================
    Responsive Styles
    ========================================================================== */
 
 @media (max-width: 768px) {
-  .container {
-    padding: 10mm;
-  }
-
-  .main-title {
-    font-size: 22px;
-  }
-
   .domain-section .chart-container {
     align-items: center;
     flex-direction: column;
