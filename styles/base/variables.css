@@ -11,6 +11,9 @@
   --color-text-secondary: #546e7a;
   --color-white: #ffffff;
   --color-background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+  --color-primary-dark: #00838f;
+  --color-light: #e0f7fa;
+  --color-text: #37474f;
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);

@@ -49,6 +49,13 @@
 }
 
 /**
+ * Page-specific container variations
+ */
+.a4-container__content--participation-insights {
+  padding: 5mm 10mm;
+}
+
+/**
  * Print styles for A4 container
  */
 @media print {

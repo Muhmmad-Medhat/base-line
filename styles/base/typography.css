@@ -131,3 +131,9 @@
 .typography__logo--small {
   font-size: 24px;
 }
+
+/* Text modifiers */
+.typography__highlight {
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-bold);
+}
