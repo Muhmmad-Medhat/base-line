@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Page 9 - Data Matrix Components
+   ========================================================================== */
+
+/**
+ * Data matrix table component
+ */
+.data-matrix {
+  margin-bottom: var(--spacing-xl);
+}
+
+.data-matrix__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+  font-size: 14px;
+}
+
+.data-matrix__table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  min-height: 50px;
+  vertical-align: middle;
+}
+
+/**
+ * Matrix table header cells (left column)
+ */
+.data-matrix__header-cell {
+  background: var(--gradient-secondary);
+  color: var(--color-white);
+  text-align: left;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 3px 10px rgba(0, 131, 143, 0.3);
+  min-width: 150px;
+}
+
+/**
+ * Department header cells (top row)
+ */
+.data-matrix__department-header {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 3px 10px rgba(77, 208, 225, 0.3);
+}
+
+/**
+ * Data cells
+ */
+.data-matrix__data-cell {
+  background: linear-gradient(135deg, #b3e5fc 0%, #e1f5fe 100%);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 2px 8px rgba(77, 208, 225, 0.2);
+  min-height: 45px;
+}
+
+/**
+ * Risk level cell modifiers
+ */
+.data-matrix__risk-cell--low {
+  background: linear-gradient(135deg, #81c784 0%, #a5d6a7 100%);
+  color: #2e7d32;
+}
+
+.data-matrix__risk-cell--very-high {
+  background: linear-gradient(135deg, #e57373 0%, #ef9a9a 100%);
+  color: #c62828;
+}
+
+.data-matrix__risk-cell--moderate {
+  background: linear-gradient(135deg, #ffb74d 0%, #ffcc02 100%);
+  color: #ef6c00;
+}
+
+/**
+ * Section headers component
+ */
+.section-headers {
+  margin-top: var(--spacing-lg);
+}
+
+.section-item {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-item__number {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  width: 35px;
+  height: 35px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 3px 10px rgba(77, 208, 225, 0.3);
+}
+
+.section-item__title {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+}
+
+/**
+ * Responsive design for data matrix
+ */
+@media (max-width: 768px) {
+  .data-matrix__table {
+    font-size: 12px;
+  }
+
+  .data-matrix__table td {
+    padding: 8px 10px;
+  }
+
+  .data-matrix__header-cell {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-matrix__table {
+    font-size: 10px;
+  }
+
+  .data-matrix__table td {
+    padding: 6px 8px;
+  }
+
+  .data-matrix__header-cell {
+    min-width: 100px;
+  }
+}
