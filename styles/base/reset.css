@@ -1,0 +1,23 @@
+/* ==========================================================================
+   CSS Reset and Normalize
+   ========================================================================== */
+
+/**
+ * Universal reset for consistent behavior across browsers
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/**
+ * Base body styles that are common across all pages
+ */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+  margin: 0;
+  padding: 20px;
+  position: relative;
+}

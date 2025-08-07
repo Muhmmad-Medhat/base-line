@@ -4,316 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cybersecurity Awareness Report - Page 11</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
-        margin: 0;
-        padding: 20px;
-        position: relative;
-      }
-
-      /* A4 Paper container */
-      .a4-container {
-        width: 210mm;
-        height: 297mm;
-        max-width: 210mm;
-        max-height: 297mm;
-        margin: 0 auto;
-        background: white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      /* Background decorative elements */
-      .bg-decoration-top-right,
-      .bg-decoration-bottom-left {
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 200px;
-        height: 200px;
-        background: linear-gradient(
-          135deg,
-          #4dd0e1 0%,
-          #00bcd4 50%,
-          #b3e5fc 100%
-        );
-        border-radius: 50%;
-        opacity: 0.15;
-        z-index: 0;
-      }
-
-      .bg-decoration-bottom-left {
-        top: auto;
-        bottom: -90px;
-        left: -90px;
-      }
-
-      .container {
-        width: 100%;
-        height: 100%;
-        padding: 15mm;
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Header */
-      .header {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-
-      .logo {
-        font-size: 28px;
-        font-weight: 300;
-        color: #4dd0e1;
-        letter-spacing: -1px;
-      }
-
-      /* Description text */
-      .description-text {
-        font-size: 12px;
-        color: #4dd0e1;
-        line-height: 1.6;
-        margin-bottom: 25px;
-      }
-
-      /* Domain grid */
-      .domain-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        margin-bottom: 25px;
-      }
-
-      .domain-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 12px;
-        color: #4dd0e1;
-        font-weight: 600;
-      }
-
-      .domain-number {
-        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
-        color: white;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 11px;
-        font-weight: 700;
-        box-shadow: 0 2px 6px rgba(77, 208, 225, 0.3);
-        flex-shrink: 0;
-      }
-
-      /* Recommendations section */
-      .recommendations-section {
-        margin-top: 15px;
-      }
-
-      .recommendations-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #00838f;
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-      }
-
-      .recommendation-item {
-        background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
-        border-radius: 12px;
-        padding: 15px 20px;
-        margin-bottom: 12px;
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        box-shadow: 0 3px 10px rgba(77, 208, 225, 0.2);
-        position: relative;
-      }
-
-      .recommendation-content {
-        flex: 1;
-      }
-
-      .recommendation-number {
-        background: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
-        color: white;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: 700;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .recommendation-title {
-        font-size: 13px;
-        font-weight: 700;
-        color: #00838f;
-        margin-bottom: 5px;
-        line-height: 1.3;
-      }
-
-      .recommendation-description {
-        font-size: 11px;
-        color: #37474f;
-        line-height: 1.4;
-      }
-
-      .recommendation-icon {
-        width: 40px;
-        height: 40px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #4dd0e1;
-        font-size: 24px;
-      }
-
-      /* SVG Icons */
-      .icon-training {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234dd0e1'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E")
-          no-repeat center;
-        background-size: contain;
-      }
-
-      .icon-workshop {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234dd0e1'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E")
-          no-repeat center;
-        background-size: contain;
-      }
-
-      .icon-department {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234dd0e1'%3E%3Cpath d='M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H17c-.8 0-1.54.37-2.01.99l-2.98 3.98A1 1 0 0 0 12.8 14l2.7-3.6H18v7.6z'/%3E%3C/svg%3E")
-          no-repeat center;
-        background-size: contain;
-      }
-
-      .icon-materials {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234dd0e1'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z'/%3E%3C/svg%3E")
-          no-repeat center;
-        background-size: contain;
-      }
-
-      .icon-participation {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234dd0e1'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E")
-          no-repeat center;
-        background-size: contain;
-      }
-
-      /* Footer */
-      .footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
-        color: white;
-        padding: 8px 15mm;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top-right-radius: 50px;
-      }
-
-      .footer-title {
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      .page-number {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 10px;
-      }
-
-      .page-number-circle {
-        background: white;
-        color: #00838f;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 16px;
-      }
-
-      @media print {
-        body {
-          background: white;
-          margin: 0;
-          padding: 0;
-        }
-        .a4-container {
-          width: 210mm;
-          height: 297mm;
-          box-shadow: none;
-          margin: 0;
-        }
-      }
-
-      @media (max-width: 768px) {
-        body {
-          padding: 10px;
-        }
-        .a4-container {
-          width: 100%;
-          height: auto;
-          min-height: 297mm;
-        }
-        .container {
-          padding: 10mm;
-        }
-        .domain-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 10px;
-        }
-        .recommendations-title {
-          font-size: 24px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .domain-grid {
-          grid-template-columns: 1fr;
-        }
-        .recommendation-item {
-          padding: 12px 15px;
-        }
-      }
-    </style>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
     <div class="a4-container">
-      <div class="bg-decoration-top-right"></div>
-      <div class="bg-decoration-bottom-left"></div>
-      <div class="container">
-        <header class="header">
-          <div class="logo">ZiSoft</div>
+      <div
+        class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--top-right"></div>
+      <div
+        class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--bottom-left"></div>
+
+      <div
+        class="a4-container__content a4-container__content--padded-large layout-flex layout-flex--column">
+        <header class="header header--start">
+          <div class="header__logo typography__logo typography__logo--large">
+            ZiSoft
+          </div>
         </header>
 
         <main>
@@ -477,13 +183,13 @@
           </div>
         </main>
 
-        <footer class="footer">
-          <div class="footer-title">
+        <footer class="footer footer--gradient">
+          <div class="footer__title">
             Cybersecurity Awareness Baseline Assessment Report
           </div>
-          <div class="page-number">
-            <span>PAGE NO.</span>
-            <div class="page-number-circle">11</div>
+          <div class="footer__page-number">
+            <span class="footer__page-label">PAGE NO.</span>
+            <div class="footer__page-circle">11</div>
           </div>
         </footer>
       </div>

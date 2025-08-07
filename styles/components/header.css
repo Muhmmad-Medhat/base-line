@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Header Component
+   ========================================================================== */
+
+/**
+ * Main header layout
+ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.header--start {
+  justify-content: flex-start;
+}
+
+.header--center {
+  justify-content: center;
+}
+
+.header--end {
+  justify-content: flex-end;
+}
+
+/**
+ * Header sections
+ */
+.header__section {
+  display: flex;
+  align-items: center;
+}
+
+.header__section--grow {
+  flex-grow: 1;
+}
+
+/**
+ * Logo component within header
+ */
+.header__logo {
+  display: flex;
+  align-items: flex-start;
+}
+
+/**
+ * Header content area
+ */
+.header__content {
+  flex: 1;
+}
+
+/**
+ * Responsive header styles
+ */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header__logo {
+    margin-bottom: var(--spacing-xxl);
+  }
+}

@@ -1,0 +1,64 @@
+/* ==========================================================================
+   CSS Variables (Custom Properties)
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-primary: #00838f;
+  --color-secondary: #4dd0e1;
+  --color-accent: #00bcd4;
+  --color-text-primary: #37474f;
+  --color-text-secondary: #546e7a;
+  --color-white: #ffffff;
+  --color-background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
+  --gradient-secondary: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
+  --gradient-decoration: linear-gradient(
+    135deg,
+    #4dd0e1 0%,
+    #00bcd4 50%,
+    #b3e5fc 100%
+  );
+  --gradient-dark-blue: linear-gradient(135deg, #00bcd4 0%, #00838f 100%);
+
+  /* Typography */
+  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 40px;
+
+  /* A4 Dimensions */
+  --a4-width: 210mm;
+  --a4-height: 297mm;
+  --a4-padding: 15mm;
+  --a4-padding-large: 20mm;
+
+  /* Shadows */
+  --shadow-card: 0 0 20px rgba(0, 0, 0, 0.1);
+  --shadow-button: 0 4px 15px rgba(77, 208, 225, 0.3);
+  --shadow-small: 0 2px 5px rgba(77, 208, 225, 0.3);
+
+  /* Border Radius */
+  --radius-small: 4px;
+  --radius-medium: 10px;
+  --radius-large: 50px;
+  --radius-circle: 50%;
+
+  /* Z-index Scale */
+  --z-background: 0;
+  --z-decoration: 1;
+  --z-overlay: 2;
+  --z-content: 3;
+}

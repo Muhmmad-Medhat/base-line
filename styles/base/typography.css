@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Typography System
+   ========================================================================== */
+
+/**
+ * Base typography styles
+ */
+.typography {
+  font-family: var(--font-family-primary);
+  line-height: 1.5;
+}
+
+/* Headings */
+.typography__heading--large {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+}
+
+.typography__heading--medium {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.typography__heading--small {
+  font-size: 28px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-secondary);
+  letter-spacing: -1px;
+}
+
+.typography__heading--extra-small {
+  font-size: 24px;
+  font-weight: var(--font-weight-light);
+  color: var(--color-accent);
+  letter-spacing: -1px;
+}
+
+.typography__title--section {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: 1px;
+}
+
+.typography__title--subsection {
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  line-height: 1.4;
+}
+
+.typography__title--small {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.typography__title--extra-small {
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+/* Body Text */
+.typography__body--large {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.typography__body--medium {
+  font-size: 14px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.typography__body--small {
+  font-size: 12px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.typography__body--extra-small {
+  font-size: 11px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* Special text styles */
+.typography__emphasis {
+  font-weight: var(--font-weight-bold);
+}
+
+.typography__italic {
+  font-style: italic;
+}
+
+.typography__secondary-color {
+  color: var(--color-secondary);
+}
+
+.typography__watermark {
+  font-size: 105px;
+  font-weight: var(--font-weight-bold);
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 10px;
+  white-space: nowrap;
+}
+
+/* Logo specific styles */
+.typography__logo {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+  letter-spacing: 1px;
+}
+
+.typography__logo--large {
+  font-size: 32px;
+}
+
+.typography__logo--medium {
+  font-size: 28px;
+}
+
+.typography__logo--small {
+  font-size: 24px;
+}

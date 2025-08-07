@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Layout Utilities
+   ========================================================================== */
+
+/**
+ * Flexbox utilities
+ */
+.layout-flex {
+  display: flex;
+}
+
+.layout-flex--column {
+  flex-direction: column;
+}
+
+.layout-flex--row {
+  flex-direction: row;
+}
+
+.layout-flex--center {
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-flex--space-between {
+  justify-content: space-between;
+}
+
+.layout-flex--align-start {
+  align-items: flex-start;
+}
+
+.layout-flex--align-end {
+  align-items: flex-end;
+}
+
+.layout-flex--align-baseline {
+  align-items: baseline;
+}
+
+.layout-flex--grow {
+  flex-grow: 1;
+}
+
+.layout-flex--shrink {
+  flex-shrink: 1;
+}
+
+.layout-flex--no-shrink {
+  flex-shrink: 0;
+}
+
+/**
+ * Width utilities
+ */
+.layout-width--half {
+  width: 50%;
+}
+
+.layout-width--full {
+  width: 100%;
+}
+
+.layout-width--auto {
+  width: auto;
+}
+
+/**
+ * Spacing utilities
+ */
+.layout-spacing--xs {
+  margin-bottom: var(--spacing-xs);
+}
+
+.layout-spacing--sm {
+  margin-bottom: var(--spacing-sm);
+}
+
+.layout-spacing--md {
+  margin-bottom: var(--spacing-md);
+}
+
+.layout-spacing--lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.layout-spacing--xl {
+  margin-bottom: var(--spacing-xl);
+}
+
+.layout-spacing--xxl {
+  margin-bottom: var(--spacing-xxl);
+}
+
+/**
+ * Position utilities
+ */
+.layout-position--relative {
+  position: relative;
+}
+
+.layout-position--absolute {
+  position: absolute;
+}
+
+/**
+ * Text alignment utilities
+ */
+.layout-text--left {
+  text-align: left;
+}
+
+.layout-text--center {
+  text-align: center;
+}
+
+.layout-text--right {
+  text-align: right;
+}
+
+/**
+ * Overflow utilities
+ */
+.layout-overflow--hidden {
+  overflow: hidden;
+}
+
+.layout-overflow--ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

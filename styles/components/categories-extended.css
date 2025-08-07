@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Extended Categories Component
+   ========================================================================== */
+
+/**
+ * Two column layout for categories
+ */
+.categories-grid--two-rows {
+  flex-wrap: wrap;
+}
+
+.categories-grid--two-rows .category-box {
+  width: calc(16.66% - 8px); /* 6 items per row */
+  margin-bottom: 8px;
+}
+
+/**
+ * Additional spacing for second row
+ */
+.categories-grid--row-two {
+  margin-top: 0;
+}
+
+/**
+ * Mobile responsive categories
+ */
+@media (max-width: 768px) {
+  .categories-grid--two-rows .category-box {
+    width: calc(33.33% - 8px); /* 3 items per row on mobile */
+  }
+}

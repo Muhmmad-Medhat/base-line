@@ -8,370 +8,23 @@
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
-        margin: 0;
-        padding: 20px;
-        position: relative;
-      }
-
-      /* A4 Paper container */
-      .a4-container {
-        width: 210mm;
-        height: 297mm;
-        max-width: 210mm;
-        max-height: 297mm;
-        margin: 0 auto;
-        background: white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      /* Background decorative elements */
-      .bg-decoration-top-right,
-      .bg-decoration-bottom-left {
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 200px;
-        height: 200px;
-        background: linear-gradient(
-          135deg,
-          #4dd0e1 0%,
-          #00bcd4 50%,
-          #b3e5fc 100%
-        );
-        border-radius: 50%;
-        opacity: 0.15;
-        z-index: 0;
-      }
-
-      .bg-decoration-bottom-left {
-        top: auto;
-        bottom: -90px;
-        left: -90px;
-      }
-
-      .container {
-        width: 100%;
-        height: 100%;
-        padding: 20mm;
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Header */
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-      }
-
-      .logo {
-        font-size: 24px;
-        font-weight: 300;
-        color: #00bcd4;
-        letter-spacing: -1px;
-      }
-
-      /* Main title */
-      .main-title {
-        font-size: 36px;
-        font-weight: 700;
-        color: #00838f;
-        margin-bottom: 30px;
-        letter-spacing: 1.5px;
-      }
-
-      /* Content sections */
-      .content-section {
-        margin-bottom: 25px;
-      }
-
-      .section-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: #4dd0e1;
-        margin-bottom: 8px;
-      }
-
-      .section-text {
-        font-size: 12px;
-        line-height: 1.5;
-        color: #37474f;
-        margin-bottom: 15px;
-      }
-
-      .highlight-number {
-        color: #4dd0e1;
-        font-weight: 700;
-      }
-
-      /* Donut chart container */
-      .chart-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 30px 0;
-      }
-
-      .donut-wrapper {
-        position: relative;
-        width: 400px;
-        height: 220px;
-        margin: 0 auto 20px auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .donut-wrapper::before {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 320px;
-        height: 60px;
-        background: radial-gradient(
-          ellipse,
-          rgba(0, 131, 143, 0.3) 0%,
-          rgba(0, 131, 143, 0.1) 40%,
-          transparent 70%
-        );
-        border-radius: 50%;
-        z-index: -1;
-        filter: blur(8px);
-      }
-
-      #participationChart {
-        width: 400px;
-        height: 220px;
-      }
-
-      /* Chart labels */
-      .chart-labels {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 10px;
-      }
-
-      .label-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 11px;
-        color: #37474f;
-      }
-
-      .label-color {
-        width: 12px;
-        height: 12px;
-        border-radius: 2px;
-      }
-
-      .label-completed {
-        background: #4dd0e1;
-      }
-
-      .label-incomplete {
-        background: #00838f;
-      }
-
-      /* Key metrics section */
-      .key-metrics {
-        margin: 35px 0;
-      }
-
-      .metrics-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #4dd0e1;
-        margin-bottom: 25px;
-      }
-
-      .overall-awareness {
-        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
-        color: white;
-        padding: 12px 20px;
-        border-radius: 20px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        display: inline-block;
-        box-shadow: 0 3px 12px rgba(77, 208, 225, 0.3);
-      }
-
-      .score-text {
-        font-size: 13px;
-        color: #37474f;
-        margin-bottom: 20px;
-        line-height: 1.5;
-      }
-
-      .score-highlight {
-        color: #00838f;
-        font-weight: 700;
-        font-size: 14px;
-      }
-
-      /* Large score chart */
-      .score-chart-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin: 20px 0;
-      }
-
-      .score-donut-wrapper {
-        position: relative;
-        width: 400px;
-        height: 220px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .score-donut-wrapper::before {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 320px;
-        height: 60px;
-        background: radial-gradient(
-          ellipse,
-          rgba(0, 131, 143, 0.3) 0%,
-          rgba(0, 131, 143, 0.1) 40%,
-          transparent 70%
-        );
-        border-radius: 50%;
-        z-index: -1;
-        filter: blur(8px);
-      }
-
-      #scoreChart {
-        width: 400px;
-        height: 220px;
-      }
-
-      /* Custom styling for better pixel perfect match */
-      .custom-chart-label {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      .score-label {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      /* Footer */
-      .footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
-        color: white;
-        padding: 10px 20mm;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top-right-radius: 50px;
-      }
-
-      .footer-title {
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      .page-number {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 10px;
-      }
-
-      .page-number-circle {
-        background: white;
-        color: #00838f;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 14px;
-      }
-
-      @media print {
-        body {
-          background: white;
-          margin: 0;
-          padding: 0;
-        }
-
-        .a4-container {
-          width: 210mm;
-          height: 297mm;
-          box-shadow: none;
-          margin: 0;
-        }
-      }
-
-      @media (max-width: 768px) {
-        body {
-          padding: 10px;
-        }
-
-        .a4-container {
-          width: 100%;
-          height: auto;
-          min-height: 297mm;
-        }
-
-        .container {
-          padding: 10mm;
-        }
-
-        .main-title {
-          font-size: 28px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../styles/main.css">
   </head>
   <body>
     <div class="a4-container">
-      <div class="bg-decoration-top-right"></div>
-      <div class="bg-decoration-bottom-left"></div>
-      <div class="container">
-        <header class="header">
-          <div class="logo">ZiSoft</div>
+      <div class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--top-right"></div>
+      <div class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--bottom-left"></div>
+      <div class="a4-container__content a4-container__content--padded-large layout-flex layout-flex--column">
+        <header class="header header--start">
+          <div class="header__logo typography__logo typography__logo--extra-small">ZiSoft</div>
         </header>
 
         <main>
-          <h1 class="main-title">EXECUTIVE SUMMARY</h1>
+          <h1 class="typography__heading--large layout-spacing--lg">EXECUTIVE SUMMARY</h1>
 
           <div class="content-section">
-            <h2 class="section-title">Assessment Participation</h2>
-            <p class="section-text">
+            <h2 class="content-section__title">Assessment Participation</h2>
+            <p class="content-section__text">
               The Cybersecurity Awareness Baseline Assessment engaged a total of
               <span class="highlight-number">213 employees</span>, with
               <span class="highlight-number">187 employees</span> fully
@@ -398,7 +51,7 @@
           </div>
 
           <div class="content-section">
-            <p class="section-text">
+            <p class="content-section__text">
               The assessment spanned
               <span class="highlight-number">16 departments</span>, with a
               comprehensive question set of
@@ -430,12 +83,12 @@
         </main>
 
         <footer class="footer">
-          <div class="footer-title">
+          <div class="footer__title">
             Cybersecurity Awareness Baseline Assessment Report
           </div>
-          <div class="page-number">
+          <div class="footer__content">
             <span>PAGE NO.</span>
-            <div class="page-number-circle">4</div>
+            <div class="footer__page-number">4</div>
           </div>
         </footer>
       </div>

@@ -4,450 +4,197 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cybersecurity Awareness Report - Table of Contents</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
-        margin: 0;
-        padding: 20px;
-        position: relative;
-      }
-
-      /* A4 Paper container */
-      .a4-container {
-        width: 210mm;
-        height: 297mm;
-        max-width: 210mm;
-        max-height: 297mm;
-        margin: 0 auto;
-        background: white;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      /* Background decorative elements */
-      .bg-decoration-right {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100mm; /* Adjust width to match image */
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          #00bcd4 0%,
-          #00838f 100%
-        ); /* Darker blue gradient */
-        z-index: 0;
-        border-bottom-left-radius: 100mm; /* Large radius for the curve */
-        border-top-left-radius: 100mm;
-        transform: translateX(
-          50mm
-        ); /* Move it partially off-screen to create the curve */
-      }
-
-      /* Background decorative elements */
-      .bg-decoration-top-right,
-      .bg-decoration-bottom-left {
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 200px;
-        height: 200px;
-        background: linear-gradient(
-          135deg,
-          #4dd0e1 0%,
-          #00bcd4 50%,
-          #b3e5fc 100%
-        );
-        border-radius: 50%;
-        opacity: 0.15;
-        z-index: 0;
-      }
-
-      .bg-decoration-bottom-left {
-        top: auto;
-        bottom: -90px;
-        left: -90px;
-      }
-
-      .bg-decoration-small-circle {
-        position: absolute;
-        bottom: 100px; /* Adjust position */
-        right: 0;
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
-        border-radius: 50%;
-        opacity: 0.2;
-        z-index: 1;
-        transform: translate(40px, 0); /* Position to match image */
-      }
-
-      .contents-text {
-        position: absolute;
-        right: -60mm; /* Adjust to be partially off-screen */
-        top: 50%;
-        transform: translateY(-50%) rotate(-90deg);
-        font-size: 105px;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.2); /* Light opacity */
-        letter-spacing: 10px;
-        white-space: nowrap;
-        z-index: 2; /* Above the blue background */
-      }
-
-      .container {
-        width: 100%;
-        height: 100%;
-        padding: 15mm;
-        position: relative;
-        z-index: 3; /* Ensure content is on top */
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Header */
-      .header {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-
-      .logo {
-        font-size: 28px;
-        font-weight: 300;
-        color: #4dd0e1;
-        letter-spacing: -1px;
-      }
-
-      /* Main title */
-      .main-title {
-        font-size: 20px;
-        font-weight: 700;
-        color: #00838f;
-        /* margin-bottom: 30px; */
-        letter-spacing: 1px;
-      }
-
-      /* Table of Contents List */
-      .toc-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        color: #37474f;
-        font-size: 14px;
-        line-height: 1.8;
-      }
-
-      .toc-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline; /* Align text and dots to baseline */
-        margin-bottom: 5px;
-        position: relative;
-      }
-
-      .toc-item.main-section {
-        font-weight: 700;
-        color: #00838f;
-        margin-top: 5px;
-        /* margin-bottom: 8px; */
-        font-size: 15px;
-        margin-right: 160px;
-      }
-
-      .toc-item.main-section::before {
-        content: '';
-        position: absolute;
-        left: -15px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 8px;
-        height: 8px;
-        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
-        border-radius: 50%;
-        box-shadow: 0 2px 5px rgba(77, 208, 225, 0.3);
-      }
-
-      .toc-item.sub-section {
-        margin-left: 20px;
-        font-weight: 500;
-        color: #4dd0e1;
-        margin-right: 160px;
-      }
-
-      .toc-item-title {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        flex-shrink: 1; /* Allow title to shrink if needed */
-      }
-
-      /* New CSS for the dynamically added dotted line */
-      .toc-dots {
-        flex-grow: 1; /* Make it fill available space */
-        border-bottom: 1px dotted #b0bec5; /* Light blue-gray dotted line */
-        margin: 0 5px; /* Space between title/page and dots */
-        align-self: flex-end; /* Align the bottom of the dots with the baseline of the text */
-      }
-
-      .toc-item-page {
-        flex-shrink: 0;
-        font-weight: 600;
-        color: #00838f;
-      }
-
-      /* Footer */
-      .footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
-        color: white;
-        padding: 8px 15mm;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top-right-radius: 50px;
-      }
-
-      .footer-title {
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      .page-number {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 10px;
-      }
-
-      .page-number-circle {
-        background: white;
-        color: #00838f;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 16px;
-      }
-
-      @media print {
-        body {
-          background: white;
-          margin: 0;
-          padding: 0;
-        }
-        .a4-container {
-          width: 210mm;
-          height: 297mm;
-          box-shadow: none;
-          margin: 0;
-        }
-      }
-
-      @media (max-width: 768px) {
-        body {
-          padding: 10px;
-        }
-        .a4-container {
-          width: 100%;
-          height: auto;
-          min-height: 297mm;
-        }
-        .container {
-          padding: 10mm;
-        }
-        .main-title {
-          font-size: 28px;
-        }
-        .contents-text {
-          font-size: 40px;
-          right: -10mm;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
     <div class="a4-container">
-      <div class="bg-decoration-right"></div>
-      <div class="bg-decoration-top-right"></div>
-      <div class="bg-decoration-bottom-left"></div>
-      <div class="bg-decoration-small-circle"></div>
-      <div class="contents-text">CONTENTS</div>
+      <div class="bg-decoration bg-decoration--curve-right"></div>
+      <div
+        class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--top-right"></div>
+      <div
+        class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--bottom-left"></div>
+      <div
+        class="bg-decoration bg-decoration--circle bg-decoration--circle-medium bg-decoration--bottom-right"></div>
+      <div class="bg-decoration bg-decoration--watermark typography__watermark">
+        CONTENTS
+      </div>
 
-      <div class="container">
-        <header class="header">
-          <div class="logo">ZiSoft</div>
+      <div
+        class="a4-container__content a4-container__content--padded layout-flex layout-flex--column">
+        <header class="header header--start">
+          <div class="header__logo typography__logo typography__logo--medium">
+            ZiSoft
+          </div>
         </header>
 
         <main>
-          <h1 class="main-title">TABLE OF CONTENTS</h1>
+          <h1 class="typography__title--section layout-spacing--lg">
+            TABLE OF CONTENTS
+          </h1>
 
-          <ul class="toc-list">
-            <li class="toc-item main-section">
-              <span class="toc-item-title">INTRODUCTION</span>
-              <span class="toc-item-page">3</span>
+          <ul class="toc">
+            <li class="toc__item toc__item--main-section">
+              <span class="toc__item-title">INTRODUCTION</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">3</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">ASSESSMENT PURPOSE</span>
-              <span class="toc-item-page">3</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">ASSESSMENT PURPOSE</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">3</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title"
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title"
                 >ASSESSMENT SCOPE AND OBJECTIVES</span
               >
-              <span class="toc-item-page">3</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">3</span>
             </li>
-            <li class="toc-item main-section">
-              <span class="toc-item-title">EXECUTIVE SUMMARY</span>
-              <span class="toc-item-page">4</span>
+            <li class="toc__item toc__item--main-section">
+              <span class="toc__item-title">EXECUTIVE SUMMARY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">4</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">ASSESSMENT PARTICIPATION</span>
-              <span class="toc-item-page">4</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">ASSESSMENT PARTICIPATION</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">4</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">KEY METRICS AND INSIGHTS</span>
-              <span class="toc-item-page">4</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">KEY METRICS AND INSIGHTS</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">4</span>
             </li>
-            <li class="toc-item main-section">
-              <span class="toc-item-title">SUMMARY OF ASSESSMENT RESULTS</span>
-              <span class="toc-item-page">6</span>
+            <li class="toc__item toc__item--main-section">
+              <span class="toc__item-title">SUMMARY OF ASSESSMENT RESULTS</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">6</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title"
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title"
                 >BASELINE ASSESSMENT SCORE DETAILS</span
               >
-              <span class="toc-item-page">6</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">6</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">CATEGORY BREAKDOWN</span>
-              <span class="toc-item-page">7</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">CATEGORY BREAKDOWN</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">7</span>
             </li>
-            <li class="toc-item main-section">
-              <span class="toc-item-title">DETAILED RESULTS</span>
-              <span class="toc-item-page">8</span>
+            <li class="toc__item toc__item--main-section">
+              <span class="toc__item-title">DETAILED RESULTS</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">8</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">01 SECURE TRAVELLING</span>
-              <span class="toc-item-page">8</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">01 SECURE TRAVELLING</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">8</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">02 MEETING SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">02 MEETING SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">03 REMOVABLE MEDIA SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">03 REMOVABLE MEDIA SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">04 SAFE BROWSING</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">04 SAFE BROWSING</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">05 MOBILE SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">05 MOBILE SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">06 SOCIAL MEDIA SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">06 SOCIAL MEDIA SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">07 DATA PROTECTION</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">07 DATA PROTECTION</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">08 ONLINE SHOPPING</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">08 ONLINE SHOPPING</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">09 CYBERSECURITY HYGIENE</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">09 CYBERSECURITY HYGIENE</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">10 FRAUD</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">10 FRAUD</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">11 EMAIL SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">11 EMAIL SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">12 WI-FI SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">12 WI-FI SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">13 SECURE PASSWORDS</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">13 SECURE PASSWORDS</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">14 PHYSICAL SECURITY</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">14 PHYSICAL SECURITY</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">15 SOCIAL ENGINEERING</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">15 SOCIAL ENGINEERING</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">16 TYPES OF PHISHING</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">16 TYPES OF PHISHING</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">17 IOT</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">17 IOT</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item sub-section">
-              <span class="toc-item-title">18 EXECUTIVES AWARENESS</span>
-              <span class="toc-item-page">9</span>
+            <li class="toc__item toc__item--sub-section">
+              <span class="toc__item-title">18 EXECUTIVES AWARENESS</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">9</span>
             </li>
-            <li class="toc-item main-section">
-              <span class="toc-item-title">RECOMMENDATIONS</span>
-              <span class="toc-item-page">10</span>
+            <li class="toc__item toc__item--main-section">
+              <span class="toc__item-title">RECOMMENDATIONS</span>
+              <span class="toc__dots"></span>
+              <span class="toc__item-page">10</span>
             </li>
           </ul>
         </main>
 
         <footer class="footer">
-          <div class="footer-title">
+          <div class="footer__title">
             Cybersecurity Awareness Baseline Assessment Report
           </div>
-          <div class="page-number">
+          <div class="footer__content">
             <span>PAGE NO.</span>
-            <div class="page-number-circle">9</div>
+            <div class="footer__page-number">2</div>
           </div>
         </footer>
       </div>
     </div>
-
-    <!-- <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', () => {
-        const tocItems = document.querySelectorAll('.toc-list .toc-item');
-
-        tocItems.forEach((item) => {
-          const titleElement = item.querySelector('.toc-item-title');
-          const pageElement = item.querySelector('.toc-item-page');
-
-          if (titleElement && pageElement) {
-            const dotsSpan = document.createElement('span');
-            dotsSpan.classList.add('toc-dots');
-            item.insertBefore(dotsSpan, pageElement);
-          }
-        });
-      });
-    </script> -->
   </body>
 </html>

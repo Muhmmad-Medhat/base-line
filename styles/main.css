@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Main Stylesheet - Cybersecurity Awareness Report
+   ========================================================================== */
+
+/**
+ * This is the main entry point for all styles in the project.
+ * It imports all the modular CSS files in the correct order.
+ * 
+ * Order of imports is important:
+ * 1. Base styles (reset, variables, typography)
+ * 2. Layout components
+ * 3. UI components
+ * 4. Page-specific styles
+ * 5. Utilities
+ */
+
+/* Base Styles */
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+
+/* Layout Components */
+@import url('./components/a4-container.css');
+@import url('./components/header.css');
+@import url('./components/footer.css');
+
+/* UI Components */
+@import url('./components/bg-decorations.css');
+@import url('./components/buttons.css');
+@import url('./components/categories-extended.css');
+@import url('./components/charts.css');
+
+/* Page-specific Styles */
+@import url('./pages/cover.css');
+@import url('./pages/table-of-contents.css');
+@import url('./pages/content.css');
+
+/* Utilities */
+@import url('./utils/layout.css');
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

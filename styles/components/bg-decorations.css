@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Background Decorations
+   ========================================================================== */
+
+/**
+ * Base background decoration styles
+ */
+.bg-decoration {
+  position: absolute;
+  z-index: var(--z-decoration);
+}
+
+/**
+ * Circular decorative elements
+ */
+.bg-decoration--circle {
+  border-radius: var(--radius-circle);
+  background: var(--gradient-decoration);
+  opacity: 0.15;
+}
+
+.bg-decoration--circle-large {
+  width: 200px;
+  height: 200px;
+}
+
+.bg-decoration--circle-medium {
+  width: 80px;
+  height: 80px;
+  opacity: 0.2;
+}
+
+/**
+ * Positioned decorative elements
+ */
+.bg-decoration--top-right {
+  top: -100px;
+  right: -100px;
+}
+
+.bg-decoration--bottom-left {
+  bottom: -90px;
+  left: -90px;
+}
+
+.bg-decoration--bottom-right {
+  bottom: 100px;
+  right: 0;
+  transform: translate(40px, 0);
+}
+
+/**
+ * Curved side decoration (for table of contents page)
+ */
+.bg-decoration--curve-right {
+  top: 0;
+  right: 0;
+  width: 100mm;
+  height: 100%;
+  background: var(--gradient-dark-blue);
+  border-bottom-left-radius: 100mm;
+  border-top-left-radius: 100mm;
+  transform: translateX(50mm);
+}
+
+/**
+ * Background image decoration
+ */
+.bg-decoration--image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: var(--z-background);
+}
+
+.bg-decoration--image-start {
+  background-image: url('../assets/images/start.png');
+}
+
+/**
+ * Overlay for text readability
+ */
+.bg-decoration--overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-overlay);
+}
+
+/**
+ * Watermark text decoration
+ */
+.bg-decoration--watermark {
+  right: -60mm;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+}
