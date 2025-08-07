@@ -37,21 +37,28 @@
       }
 
       /* Background decorative elements */
-      .bg-decoration {
+      .bg-decoration-top-right,
+      .bg-decoration-bottom-left {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 150px;
-        height: 150px;
+        top: -100px;
+        right: -100px;
+        width: 200px;
+        height: 200px;
         background: linear-gradient(
           135deg,
-          #00bcd4 0%,
-          #4dd0e1 50%,
+          #4dd0e1 0%,
+          #00bcd4 50%,
           #b3e5fc 100%
         );
         border-radius: 50%;
-        opacity: 0.1;
+        opacity: 0.15;
         z-index: 0;
+      }
+
+      .bg-decoration-bottom-left {
+        top: auto;
+        bottom: -90px;
+        left: -90px;
       }
 
       .container {
@@ -249,6 +256,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-top-right-radius: 50px;
       }
 
       .footer-title {
@@ -314,8 +322,8 @@
   </head>
   <body>
     <div class="a4-container">
-      <div class="bg-decoration"></div>
-
+      <div class="bg-decoration-top-right"></div>
+      <div class="bg-decoration-bottom-left"></div>
       <div class="container">
         <header class="header">
           <div class="logo">ZiSoft</div>

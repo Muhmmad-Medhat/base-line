@@ -3,82 +3,288 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybersecurity Awareness Baseline Assessment Report</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/typography.css" />
+    <title>Cybersecurity Awareness Report - Cover Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+        margin: 0;
+        padding: 20px;
+        position: relative;
+      }
+
+      /* A4 Paper container */
+      .a4-container {
+        width: 210mm;
+        height: 297mm;
+        max-width: 210mm;
+        max-height: 297mm;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Background image */
+      .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('./assets/images/start.png');
+        background-size: contain; /* Make the image fit inside the div */
+        background-repeat: no-repeat; /* Prevent repeating */
+        background-position: center center; /* Center both horizontally and vertically */
+        z-index: 0;
+      }
+
+      /* Overlay for text readability */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.95) 50%,
+          rgba(255, 255, 255, 0.7) 70%,
+          rgba(255, 255, 255, 0) 100%
+        ); */
+        /* z-index: 1; */
+      }
+
+      /* Content container */
+      .container {
+        width: 100%;
+        height: 100%;
+        padding: 15mm;
+        position: relative;
+        z-index: 2; /* Ensure content is on top of overlay */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* Top section */
+      .top-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .logo {
+        color: #4dd0e1;
+        width: 50%; /* 1/2 of the width */
+        display: flex;
+        align-items: flex-start;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 1px;
+      }
+
+      /* Main content */
+      .main-content {
+        width: 50%; /* 1/2 of the width */
+        margin-left: 160px;
+      }
+
+      .main-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #00838f;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        font-weight: 600;
+        color: #4dd0e1;
+        line-height: 1.4;
+        margin-bottom: 40px;
+      }
+
+      .cultivating-text {
+        font-size: 16px;
+        color: #37474f;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .customer-name {
+        display: inline-block;
+        background: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 0px 10px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
+      }
+
+      .assessment-details {
+        font-size: 14px;
+        color: #37474f;
+        line-height: 1.5;
+      }
+
+      /* Confidential section */
+      .confidential-section {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .confidential-text {
+        width: 38%;
+        font-size: 12px;
+        color: #37474f;
+        line-height: 1.5;
+        font-style: italic;
+        margin-top: 320px;
+      }
+
+      .confidential-text strong {
+        font-weight: 700;
+        font-style: normal;
+        color: #4dd0e1;
+      }
+
+      /* Bottom section */
+      .bottom-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .report-info {
+        font-size: 11px;
+        color: #37474f;
+        line-height: 1.5;
+      }
+
+      .report-info strong {
+        font-weight: 700;
+      }
+
+      .disclaimer {
+        font-size: 11px;
+        color: #37474f;
+        text-align: right;
+      }
+
+      @media print {
+        body {
+          background: white;
+          margin: 0;
+          padding: 0;
+        }
+        .a4-container {
+          width: 210mm;
+          height: 297mm;
+          box-shadow: none;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        .a4-container {
+          width: 100%;
+          height: auto;
+          min-height: 297mm;
+        }
+        .container {
+          padding: 10mm;
+        }
+        .main-content {
+          width: 100%;
+          padding-right: 0;
+          text-align: center;
+        }
+        .logo {
+          margin-bottom: 50px;
+        }
+        .main-title {
+          font-size: 28px;
+        }
+        .subtitle {
+          font-size: 16px;
+        }
+        .cultivating-text {
+          font-size: 14px;
+        }
+        .customer-name {
+          font-size: 12px;
+        }
+        .assessment-details {
+          font-size: 12px;
+        }
+        .bottom-section {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main class="main-container">
-      <div class="root">
-        <section class="report-cover">
-          <header class="report-header">
-            <h1 class="cybersecurity-awareness">
+    <div class="a4-container">
+      <div class="background-image"></div>
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="top-section">
+          <div class="logo">ZiSoft</div>
+          <div class="main-content">
+            <h1 class="main-title">
               CYBERSECURITY<br />
-              AWARENESS
-            </h1>
-            <h2 class="baseline-assessment">
+              AWARENESS<br />
               BASELINE ASSESSMENT<br />
               Report
-            </h2>
-            <p class="resilient-security-culture">
+            </h1>
+            <div class="cultivating-text">
               Cultivating a Resilient<br />
               Security Culture for
-            </p>
-            <div class="customer-button">
-              <div class="customer-background">
-                <span class="customer-name">CUSTOMER NAME</span>
-              </div>
             </div>
-          </header>
-
-          <section class="assessment-details">
-            <p class="assessment-conducted">Assessment Conducted:</p>
-            <div class="date-row">
-              <span class="date-part">October 20</span>
-              <span class="date-part">October</span>
-              <span class="date-part">24,2024</span>
+            <div class="customer-name">CUSTOMER NAME</div>
+            <div class="assessment-details">
+              Assessment Conducted:<br />
+              October 20 - October 24, 2024
             </div>
-          </section>
-        </section>
-
-        <aside class="report-metadata">
-          <div class="company-branding">
-            <h3 class="company-name">ZiSoft</h3>
           </div>
-
-          <section class="confidential-notice">
-            <p class="confidential-information">
-              This report contains confidential<br />
-              information and is intended solely for<br />
-              the internal Use of CUSTOMER NAME.
-            </p>
-          </section>
-
-          <section class="report-info">
-            <p class="report-issued">Report Issued</p>
-            <div class="issue-date-row">
-              <span class="issue-date">October 27</span>
-              <span class="issue-year">2024</span>
-            </div>
-            <div class="version-row">
-              <span class="version">Version:1.0</span>
-              <span class="distribution-notice">
-                Unauthorized distribution is prohibited.
-              </span>
-            </div>
-          </section>
-        </aside>
+        </div>
+        <div class="confidential-section">
+          <div class="confidential-text">
+            This document contains confidential information and is intended
+            solely for the internal use of <strong>Customer Name</strong>.
+          </div>
+        </div>
+        <div class="bottom-section">
+          <div class="report-info">
+            <strong>Report Issued</strong><br />
+            October 27, 2024<br />
+            Version: 1.0
+          </div>
+          <div class="disclaimer">Unauthorized distribution is prohibited.</div>
+        </div>
       </div>
-
-      <div
-        class="background-image"
-        role="img"
-        aria-label="Report background design"></div>
-    </main>
+    </div>
   </body>
 </html>
