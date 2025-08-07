@@ -566,6 +566,18 @@
   background: var(--color-chart-fraud);
 }
 
+.legend-very-high {
+  background: var(--color-risk-very-high);
+}
+
+.legend-risk-high {
+  background: var(--color-risk-high);
+}
+
+.legend-medium {
+  background: var(--color-risk-medium);
+}
+
 /**
  * Category sections
  */

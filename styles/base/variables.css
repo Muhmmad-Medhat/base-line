@@ -26,6 +26,27 @@
   --color-chart-social: #9e9e9e;
   --color-chart-fraud: #4dd0e1;
 
+  /* Risk Level Colors (Page 10) */
+  --color-risk-very-high: #00838f;
+  --color-risk-high: #4dd0e1;
+  --color-risk-medium: #00bcd4;
+
+  /* Page 9 Data Matrix Colors */
+  --color-data-cell-bg: linear-gradient(135deg, #b3e5fc 0%, #e1f5fe 100%);
+  --color-risk-low-bg: linear-gradient(135deg, #81c784 0%, #a5d6a7 100%);
+  --color-risk-low-text: #2e7d32;
+  --color-risk-very-high-bg: linear-gradient(135deg, #e57373 0%, #ef9a9a 100%);
+  --color-risk-very-high-text: #c62828;
+  --color-risk-moderate-bg: linear-gradient(135deg, #ffb74d 0%, #ffcc02 100%);
+  --color-risk-moderate-text: #ef6c00;
+
+  /* Content page colors */
+  --color-content-highlight-bg: linear-gradient(
+    135deg,
+    #e0f7fa 0%,
+    #b3e5fc 100%
+  );
+
   /* Background Colors */
   --color-background-light: #f8f9fa;
   --color-background-lighter: #f0f8ff;

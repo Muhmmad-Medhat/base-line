@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Page 10 - Detailed Results Page Styles
+   ========================================================================== */
+
+/**
+ * Page-specific styles for the detailed results page (Page 10)
+ * Contains domain breakdown and departmental analysis sections
+ * 
+ * Components included:
+ * - .main-title (page heading)
+ * - .description-text (introductory text)
+ * - .domain-section (domain analysis container)
+ * - .department-section (department comparison container)
+ * - .chart-container (chart layout components)
+ */
+
+/* ==========================================================================
+   Base Layout Styles
+   ========================================================================== */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--a4-padding-large);
+  position: relative;
+  width: 100%;
+  z-index: var(--z-content);
+}
+
+/* ==========================================================================
+   Typography & Text Components
+   ========================================================================== */
+
+.main-title {
+  color: var(--color-primary);
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-md);
+}
+
+.description-text {
+  color: var(--color-secondary);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.description-text .highlight {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ==========================================================================
+   Domain Section Components
+   ========================================================================== */
+
+.domain-section {
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.domain-section::before {
+  background: linear-gradient(
+    135deg,
+    rgba(77, 208, 225, 0.05) 0%,
+    rgba(0, 188, 212, 0.03) 100%
+  );
+  border-radius: var(--spacing-md);
+  bottom: -10px;
+  content: '';
+  left: calc(var(--a4-padding-large) * -1);
+  position: absolute;
+  right: calc(var(--a4-padding-large) * -1);
+  top: -10px;
+  z-index: -1;
+}
+
+.domain-title {
+  align-items: center;
+  color: var(--color-secondary);
+  display: flex;
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  gap: 12px;
+  margin-bottom: var(--spacing-md);
+  padding: 0 var(--spacing-sm);
+}
+
+.domain-number {
+  align-items: center;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-circle);
+  box-shadow: var(--shadow-small);
+  color: var(--color-white);
+  display: flex;
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  height: 35px;
+  justify-content: center;
+  width: 35px;
+}
+
+.domain-details {
+  margin-bottom: var(--spacing-md);
+  padding: 0 var(--spacing-sm);
+}
+
+.domain-details div {
+  color: var(--color-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* ==========================================================================
+   Page 10 Specific Chart Layouts
+   ========================================================================== */
+
+/* Override global chart-container for page 10 specific layout */
+.domain-section .chart-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-lg);
+  justify-content: flex-start;
+  margin: var(--spacing-md) 0;
+  padding: 0 var(--spacing-sm);
+}
+
+.domain-section .chart-legend {
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 0 0 var(--spacing-lg);
+}
+
+.donut-chart-wrapper {
+  flex: 1;
+  max-width: 300px;
+}
+
+.donut-chart {
+  height: 200px;
+  position: relative;
+  width: 200px;
+}
+
+/* ==========================================================================
+   Department Section Components
+   ========================================================================== */
+
+.department-section {
+  margin-top: var(--spacing-lg);
+}
+
+.department-title {
+  background: var(--gradient-primary);
+  border-radius: 25px;
+  box-shadow: var(--shadow-button);
+  color: var(--color-white);
+  display: inline-block;
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-lg);
+  padding: 12px 25px;
+}
+
+.column-chart-container {
+  background: linear-gradient(
+    135deg,
+    rgba(77, 208, 225, 0.03) 0%,
+    rgba(0, 188, 212, 0.02) 100%
+  );
+  border-radius: var(--radius-medium);
+  height: 250px;
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-sm);
+  position: relative;
+  width: 100%;
+}
+
+#columnChart {
+  height: 100%;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Custom Labels for Charts
+   ========================================================================== */
+
+.custom-risk-label {
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  position: absolute;
+  text-shadow: 0 2px 4px rgba(0, 131, 143, 0.3);
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  .container {
+    padding: var(--a4-padding);
+  }
+
+  .main-title {
+    font-size: 24px;
+  }
+
+  .domain-section .chart-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .domain-section .chart-legend {
+    margin-left: 0;
+    margin-top: var(--spacing-md);
+  }
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10mm;
+  }
+
+  .main-title {
+    font-size: 22px;
+  }
+
+  .domain-section .chart-container {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .domain-section .chart-legend {
+    margin-left: 0;
+    margin-top: var(--spacing-md);
+  }
+}

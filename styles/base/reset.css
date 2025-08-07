@@ -15,9 +15,9 @@
  * Base body styles that are common across all pages
  */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
+  background: var(--color-background);
+  font-family: var(--font-family-primary);
   margin: 0;
-  padding: 20px;
+  padding: var(--spacing-lg);
   position: relative;
 }

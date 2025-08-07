@@ -63,10 +63,10 @@
  * Data cells
  */
 .data-matrix__data-cell {
-  background: linear-gradient(135deg, #b3e5fc 0%, #e1f5fe 100%);
+  background: var(--color-data-cell-bg);
+  box-shadow: 0 2px 8px rgba(77, 208, 225, 0.2);
   color: var(--color-primary);
   font-weight: var(--font-weight-semibold);
-  box-shadow: 0 2px 8px rgba(77, 208, 225, 0.2);
   min-height: 45px;
 }
 
@@ -74,18 +74,18 @@
  * Risk level cell modifiers
  */
 .data-matrix__risk-cell--low {
-  background: linear-gradient(135deg, #81c784 0%, #a5d6a7 100%);
-  color: #2e7d32;
+  background: var(--color-risk-low-bg);
+  color: var(--color-risk-low-text);
 }
 
 .data-matrix__risk-cell--very-high {
-  background: linear-gradient(135deg, #e57373 0%, #ef9a9a 100%);
-  color: #c62828;
+  background: var(--color-risk-very-high-bg);
+  color: var(--color-risk-very-high-text);
 }
 
 .data-matrix__risk-cell--moderate {
-  background: linear-gradient(135deg, #ffb74d 0%, #ffcc02 100%);
-  color: #ef6c00;
+  background: var(--color-risk-moderate-bg);
+  color: var(--color-risk-moderate-text);
 }
 
 /**
