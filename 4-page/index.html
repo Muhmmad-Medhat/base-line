@@ -492,28 +492,30 @@
           // Configure slice appearance
           pieSeries.slices.template.propertyFields.fill = 'color';
           pieSeries.slices.template.stroke = am4core.color('#FFFFFF');
-          pieSeries.slices.template.strokeWidth = 8;
+          pieSeries.slices.template.strokeWidth = 0;
           pieSeries.slices.template.strokeOpacity = 0;
 
-          // Configure labels - ensure they always appear
+          // Configure labels using amCharts built-in system
+          pieSeries.labels.template.disabled = false;
           pieSeries.labels.template.text = '{value}';
           pieSeries.labels.template.fontSize = 18;
           pieSeries.labels.template.fontWeight = 'bold';
-          pieSeries.labels.template.fill = am4core.color('#FFFFFF');
+          pieSeries.labels.template.fill = am4core.color('#00838f');
           pieSeries.labels.template.fontFamily = 'Segoe UI';
-          pieSeries.labels.template.disabled = false;
+          pieSeries.labels.template.radius = am4core.percent(-25);
+          pieSeries.labels.template.textAlign = 'middle';
+          pieSeries.labels.template.textValign = 'middle';
 
-          // Hide ticks
-          pieSeries.ticks.template.disabled = true;
+          // Configure label ticks (connecting lines)
+          pieSeries.ticks.template.disabled = false;
+          pieSeries.ticks.template.stroke = am4core.color('#4dd0e1');
+          pieSeries.ticks.template.strokeWidth = 2;
+          pieSeries.ticks.template.strokeOpacity = 0.8;
+          pieSeries.ticks.template.strokeDasharray = '2,2';
 
-          // Add custom external labels after chart is ready
+          // Chart is ready for display
           chart.events.on('ready', function () {
-            setTimeout(() => {
-              addCustomLabels('participationChart', [
-                { value: '26', position: 'left' },
-                { value: '187', position: 'right' },
-              ]);
-            }, 500);
+            console.log('Participation chart ready');
           });
         } catch (error) {
           console.error('Error drawing participation chart:', error);
@@ -559,97 +561,36 @@
           // Configure slice appearance
           pieSeries.slices.template.propertyFields.fill = 'color';
           pieSeries.slices.template.stroke = am4core.color('#FFFFFF');
-          pieSeries.slices.template.strokeWidth = 8;
+          pieSeries.slices.template.strokeWidth = 0;
           pieSeries.slices.template.strokeOpacity = 0;
 
-          // Hide labels and ticks for score chart
-          pieSeries.labels.template.disabled = true;
-          pieSeries.ticks.template.disabled = true;
+          // Configure labels for score chart
+          pieSeries.labels.template.disabled = false;
+          pieSeries.labels.template.text = '{value.percent.formatNumber("#")}%';
+          pieSeries.labels.template.fontSize = 24;
+          pieSeries.labels.template.fontWeight = '700';
+          pieSeries.labels.template.fill = am4core.color('#00838f');
+          pieSeries.labels.template.fontFamily = 'Segoe UI';
+          pieSeries.labels.template.radius = am4core.percent(-40);
+          pieSeries.labels.template.textAlign = 'middle';
+          pieSeries.labels.template.textValign = 'middle';
 
-          // Add custom score label after chart is ready
+          // Configure label ticks
+          pieSeries.ticks.template.disabled = false;
+          pieSeries.ticks.template.stroke = am4core.color('#4dd0e1');
+          pieSeries.ticks.template.strokeWidth = 2;
+          pieSeries.ticks.template.strokeOpacity = 0.8;
+          pieSeries.ticks.template.strokeDasharray = '2,2';
+
+          // Chart is ready for display
           chart.events.on('ready', function () {
-            setTimeout(() => {
-              addScoreLabel();
-            }, 500);
+            console.log('Score chart ready');
           });
         } catch (error) {
           console.error('Error drawing score chart:', error);
           document.getElementById('scoreChart').innerHTML =
             '<div style="text-align: center; padding: 40px; color: #00838f; font-size: 28px; font-weight: bold;">77%</div>';
         }
-      }
-
-      function addCustomLabels(chartId, labels) {
-        const chartContainer = document.getElementById(chartId).parentElement;
-
-        // Remove existing custom labels
-        const existingLabels = chartContainer.querySelectorAll(
-          '.custom-chart-label'
-        );
-        existingLabels.forEach((label) => label.remove());
-
-        labels.forEach((label) => {
-          const labelElement = document.createElement('div');
-          labelElement.className = 'custom-chart-label';
-          labelElement.innerHTML = label.value;
-          labelElement.style.position = 'absolute';
-          labelElement.style.fontSize = '24px';
-          labelElement.style.fontWeight = '700';
-          labelElement.style.color = '#00838f';
-          labelElement.style.top = '20px';
-          labelElement.style.textShadow = '0 2px 4px rgba(0, 131, 143, 0.3)';
-
-          const lineElement = document.createElement('div');
-          lineElement.className = 'custom-chart-label';
-          lineElement.style.position = 'absolute';
-          lineElement.style.borderTop = '2px dotted #4dd0e1';
-          lineElement.style.width = '40px';
-          lineElement.style.top = '35px';
-
-          if (label.position === 'left') {
-            labelElement.style.left = '-50px';
-            lineElement.style.left = '-40px';
-          } else {
-            labelElement.style.right = '-50px';
-            lineElement.style.right = '-40px';
-          }
-
-          chartContainer.appendChild(labelElement);
-          chartContainer.appendChild(lineElement);
-        });
-      }
-
-      function addScoreLabel() {
-        const chartContainer =
-          document.getElementById('scoreChart').parentElement;
-
-        // Remove existing labels
-        const existingLabels = chartContainer.querySelectorAll('.score-label');
-        existingLabels.forEach((label) => label.remove());
-
-        const percentageLabel = document.createElement('div');
-        percentageLabel.className = 'score-label';
-        percentageLabel.innerHTML = '77 %';
-        percentageLabel.style.position = 'absolute';
-        percentageLabel.style.right = '-60px';
-        percentageLabel.style.top = '50%';
-        percentageLabel.style.transform = 'translateY(-50%)';
-        percentageLabel.style.fontSize = '28px';
-        percentageLabel.style.fontWeight = '700';
-        percentageLabel.style.color = '#00838f';
-        percentageLabel.style.textShadow = '0 2px 4px rgba(0, 131, 143, 0.3)';
-
-        const dottedLine = document.createElement('div');
-        dottedLine.className = 'score-label';
-        dottedLine.style.position = 'absolute';
-        dottedLine.style.right = '-55px';
-        dottedLine.style.top = '50%';
-        dottedLine.style.transform = 'translateY(-50%)';
-        dottedLine.style.borderTop = '2px dotted #4dd0e1';
-        dottedLine.style.width = '35px';
-
-        chartContainer.appendChild(percentageLabel);
-        chartContainer.appendChild(dottedLine);
       }
 
       // Fallback if amCharts fails to load
