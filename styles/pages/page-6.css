@@ -32,17 +32,6 @@
 }
 
 /**
- * Page 6 chart section - override default chart section styles
- */
-.page-awareness-summary .chart-section {
-  margin: var(--spacing-md) 0;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  box-shadow: none;
-}
-
-/**
  * Column chart specific container for page 6
  */
 .column-chart-container--page-6 {

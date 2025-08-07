@@ -7,10 +7,10 @@
  */
 .chart-section {
   margin: var(--spacing-lg) 0;
-  background: var(--color-white);
-  border-radius: var(--radius-medium);
-  padding: var(--spacing-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 .chart-title {
@@ -31,8 +31,8 @@
   height: 250px;
   margin: var(--spacing-lg) 0;
   position: relative;
-  background: var(--color-white);
-  border-radius: var(--radius-small);
+  background: transparent;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -41,8 +41,8 @@
   height: 300px;
   margin: var(--spacing-lg) 0;
   position: relative;
-  background: var(--color-white);
-  border-radius: var(--radius-small);
+  background: transparent;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -148,9 +148,9 @@
   gap: var(--spacing-md);
   justify-content: center;
   margin: var(--spacing-lg) 0;
-  padding: var(--spacing-md);
-  background: var(--color-background-light);
-  border-radius: var(--radius-small);
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
 }
 
 .legend-item {
@@ -207,10 +207,10 @@
   line-height: 1.4;
   text-align: center;
   margin-top: var(--spacing-md);
-  padding: var(--spacing-sm);
-  background: var(--color-background-lighter);
-  border-radius: var(--radius-small);
-  border-left: 3px solid var(--color-secondary);
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border-left: none;
 }
 
 /**
@@ -224,12 +224,12 @@
 }
 
 .stat-card {
-  background: var(--color-white);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-small);
+  background: transparent;
+  padding: var(--spacing-sm);
+  border-radius: 0;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--color-border-light);
+  box-shadow: none;
+  border: none;
 }
 
 .stat-value {
@@ -619,13 +619,9 @@
   height: 420px;
   margin: var(--spacing-md) 0;
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(77, 208, 225, 0.03) 0%,
-    rgba(0, 188, 212, 0.02) 100%
-  );
-  border-radius: 10px;
-  padding: var(--spacing-sm);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
 }
 
 #stackedChart {
