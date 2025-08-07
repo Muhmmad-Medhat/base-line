@@ -3,11 +3,23 @@
    ========================================================================== */
 
 /**
- * Data matrix table component
+ * Page 9 main content layout - ensure proper spacing
  */
 .data-matrix {
   margin-bottom: var(--spacing-xl);
 }
+
+/**
+ * Section headers spacing for page 9 - ensure no footer overlap
+ */
+.section-headers {
+  margin-top: var(--spacing-lg);
+  margin-bottom: 0;
+}
+
+/**
+ * Data matrix table component
+ */
 
 .data-matrix__table {
   width: 100%;
@@ -79,9 +91,6 @@
 /**
  * Section headers component
  */
-.section-headers {
-  margin-top: var(--spacing-lg);
-}
 
 .section-item {
   margin-bottom: var(--spacing-md);
