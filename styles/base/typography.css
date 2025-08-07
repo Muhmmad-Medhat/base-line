@@ -132,6 +132,10 @@
   font-size: 24px;
 }
 
+.typography__logo--extra-small {
+  font-size: 20px;
+}
+
 /* Text modifiers */
 .typography__highlight {
   color: var(--color-primary-dark);

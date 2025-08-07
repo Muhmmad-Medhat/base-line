@@ -29,6 +29,11 @@
   flex-direction: column;
 }
 
+.a4-container__content main {
+  flex: 1;
+  margin-bottom: 50px; /* Ensure space before footer for all pages */
+}
+
 .a4-container__content--padded {
   padding: var(--a4-padding);
 }
@@ -52,7 +57,7 @@
  * Page-specific container variations
  */
 .a4-container__content--participation-insights {
-  padding: 5mm 10mm;
+  padding: 8mm 12mm;
 }
 
 /**
@@ -88,6 +93,6 @@
   }
 
   .a4-container__content--padded {
-    padding: 10mm;
+    padding: 8mm;
   }
 }

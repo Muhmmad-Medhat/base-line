@@ -6,12 +6,23 @@
  * This is the main entry point for all styles in the project.
  * It imports all the modular CSS files in the correct order.
  * 
- * Order of imports is important:
+ * CSS Architecture:
+ * - Uses a modular approach with component-based structure
+ * - Follows BEM (Block Element Modifier) naming convention
+ * - Uses CSS custom properties (variables) for consistency
+ * - Implements ITCSS principles for scalable organization
+ * 
+ * Import Order (CRITICAL - maintain this order):
  * 1. Base styles (reset, variables, typography)
- * 2. Layout components
- * 3. UI components
- * 4. Page-specific styles
- * 5. Utilities
+ * 2. Layout components (containers, grid systems)
+ * 3. UI components (reusable interface elements)
+ * 4. Page-specific styles (unique to individual pages)
+ * 5. Utilities (helper classes, overrides)
+ * 
+ * Each component is self-contained and follows BEM naming:
+ * - .block (component name)
+ * - .block__element (component part)
+ * - .block--modifier (component variation)
  */
 
 /* Base Styles */
@@ -34,6 +45,7 @@
 @import url('./pages/cover.css');
 @import url('./pages/table-of-contents.css');
 @import url('./pages/content.css');
+@import url('./pages/page-6.css');
 
 /* Utilities */
 @import url('./utils/layout.css');

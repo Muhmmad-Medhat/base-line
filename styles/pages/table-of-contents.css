@@ -65,7 +65,7 @@
 
 .toc__dots {
   flex-grow: 1;
-  border-bottom: 1px dotted #b0bec5;
+  border-bottom: 1px dotted var(--color-border-dotted);
   margin: 0 var(--spacing-xs);
   align-self: flex-end;
 }
