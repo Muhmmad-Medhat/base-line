@@ -56,6 +56,7 @@
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
   --gradient-secondary: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
+  --gradient-footer: linear-gradient(135deg, #00838f 0%, #00acc1 100%);
   --gradient-decoration: linear-gradient(
     135deg,
     #4dd0e1 0%,
@@ -63,6 +64,7 @@
     #b3e5fc 100%
   );
   --gradient-dark-blue: linear-gradient(135deg, #00bcd4 0%, #00838f 100%);
+  --gradient-background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
 
   /* Typography */
   --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

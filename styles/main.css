@@ -11,6 +11,7 @@
  * - Follows BEM (Block Element Modifier) naming convention
  * - Uses CSS custom properties (variables) for consistency
  * - Implements ITCSS principles for scalable organization
+ * - External JavaScript files for all chart functionality
  * 
  * Import Order (CRITICAL - maintain this order):
  * 1. Base styles (reset, variables, typography)
@@ -48,6 +49,7 @@
 @import url('./pages/page-6.css');
 @import url('./pages/page-9.css');
 @import url('./pages/page-10.css');
+@import url('./pages/page-11.css');
 
 /* Utilities */
 @import url('./utils/layout.css');
