@@ -66,44 +66,19 @@ base-line/
 
 ### Page-by-Page Breakdown
 
-| Page | Title | Content | Interactive Elements |
-|------|-------|---------|---------------------|
-| **Cover** | Title Page | Project branding, assessment period, customer info | - |
-| **Page 2** | Table of Contents | Navigation structure and page references | - |
-| **Page 3** | Introduction | Assessment purpose, scope, and methodology | - |
-| **Page 4** | Executive Summary | Participation metrics and key insights | 📊 Participation & Score Charts |
-| **Page 5** | Participation Insights | Department-level awareness analysis | 📊 3D Column Chart |
-| **Page 6** | Assessment Results | Category-wise awareness breakdown | 📊 Interactive Charts & Progress Circles |
-| **Page 7** | Category Breakdown | Detailed domain performance analysis | 📊 Progress Visualization |
-| **Page 8** | Department Distribution | Cross-department awareness comparison | 📊 Stacked Bar Chart |
-| **Page 9** | Data Matrix | Comprehensive risk matrix overview | 📊 Data Grid Visualization |
-| **Page 10** | Detailed Results | Risk assessment and departmental analysis | 📊 Risk Donut & Column Charts |
-| **Page 11** | Recommendations | Actionable training and improvement strategies | - |
-
-### Assessment Domains Covered
-
-**Digital and Online Security:**
-
-- Safe Browsing, Mobile Security, Online Shopping
-- Email Security, Wi-Fi Security, IoT Security
-
-**Information Protection and Data Security:**
-
-- Data Protection, Removable Media Security
-- Cybersecurity Hygiene, Secure Passwords
-
-**Social Engineering and Threat Awareness:**
-
-- Social Engineering, Types of Phishing
-- Social Media Security, Executive Awareness
-
-**Physical and Environmental Security:**
-
-- Secure Travelling, Meeting Security, Physical Security
-
-**Fraud and Embezzlement:**
-
-- Fraud detection and prevention strategies
+| Page        | Title                   | Content                                            | Interactive Elements                     |
+| ----------- | ----------------------- | -------------------------------------------------- | ---------------------------------------- |
+| **Cover**   | Title Page              | Project branding, assessment period, customer info | -                                        |
+| **Page 2**  | Table of Contents       | Navigation structure and page references           | -                                        |
+| **Page 3**  | Introduction            | Assessment purpose, scope, and methodology         | -                                        |
+| **Page 4**  | Executive Summary       | Participation metrics and key insights             | 📊 Participation & Score Charts          |
+| **Page 5**  | Participation Insights  | Department-level awareness analysis                | 📊 3D Column Chart                       |
+| **Page 6**  | Assessment Results      | Category-wise awareness breakdown                  | 📊 Interactive Charts & Progress Circles |
+| **Page 7**  | Category Breakdown      | Detailed domain performance analysis               | 📊 Progress Visualization                |
+| **Page 8**  | Department Distribution | Cross-department awareness comparison              | 📊 Stacked Bar Chart                     |
+| **Page 9**  | Data Matrix             | Comprehensive risk matrix overview                 | 📊 Data Grid Visualization               |
+| **Page 10** | Detailed Results        | Risk assessment and departmental analysis          | 📊 Risk Donut & Column Charts            |
+| **Page 11** | Recommendations         | Actionable training and improvement strategies     | -                                        |
 
 ## 🛠️ Technology Stack
 
@@ -136,11 +111,11 @@ base-line/
 
 ```css
 :root {
-  --color-primary: #4dd0e1;        /* Light Blue */
-  --color-secondary: #00838f;       /* Dark Teal */
-  --color-accent: #00bcd4;          /* Cyan */
-  --color-white: #ffffff;           /* White */
-  --color-text-primary: #37474f;    /* Dark Gray */
+  --color-primary: #4dd0e1; /* Light Blue */
+  --color-secondary: #00838f; /* Dark Teal */
+  --color-accent: #00bcd4; /* Cyan */
+  --color-white: #ffffff; /* White */
+  --color-text-primary: #37474f; /* Dark Gray */
 }
 ```
 
@@ -163,8 +138,12 @@ base-line/
 
 ```css
 :root {
-  --spacing-xs: 5px;    --spacing-sm: 10px;   --spacing-md: 15px;
-  --spacing-lg: 20px;   --spacing-xl: 30px;   --spacing-xxl: 40px;
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 40px;
 }
 ```
 
@@ -203,27 +182,27 @@ This project uses a modular typography system with a primary font variable. Goog
 
 1. **Clone or download the project**
 
-  ```bash
-   git clone https://github.com/Muhmmad-Medhat/base-line.git
-   cd base-line
-   ```
+```bash
+ git clone https://github.com/Muhmmad-Medhat/base-line.git
+ cd base-line
+```
 
 1. **Serve the project locally**
 
-  ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js
-   npx serve .
-   
-   # Using PHP
-   php -S localhost:8000
-   ```
+```bash
+ # Using Python
+ python -m http.server 8000
+
+ # Using Node.js
+ npx serve .
+
+ # Using PHP
+ php -S localhost:8000
+```
 
 1. **Open in browser**
 
-  Navigate to `http://localhost:8000` to view the cover page
+Navigate to `http://localhost:8000` to view the cover page
 
 ### Page Navigation
 
@@ -289,15 +268,20 @@ All charts include:
 
 ```css
 /* Block */
-.header { }
+.header {
+}
 
 /* Element */
-.header__logo { }
-.header__content { }
+.header__logo {
+}
+.header__content {
+}
 
 /* Modifier */
-.header--start { }
-.header--center { }
+.header--start {
+}
+.header--center {
+}
 ```
 
 ### File Naming Conventions
@@ -314,14 +298,14 @@ Each page follows consistent structure:
 <div class="a4-container">
   <!-- Background decorations -->
   <div class="bg-decoration bg-decoration--circle"></div>
-  
+
   <div class="a4-container__content a4-container__content--padded-large">
     <header class="header header--start">
       <div class="header__logo typography__logo">ZiSoft</div>
     </header>
-    
+
     <main><!-- Page content --></main>
-    
+
     <footer class="footer">
       <div class="footer__title">Report Title</div>
       <div class="footer__content">
@@ -350,7 +334,7 @@ Each page follows consistent structure:
     size: A4;
     margin: 0;
   }
-  
+
   body {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
@@ -366,21 +350,21 @@ Each page follows consistent structure:
 ✅ **Modular Architecture** - 15+ organized CSS components  
 ✅ **BEM Implementation** - Consistent naming throughout  
 ✅ **Responsive Design** - Mobile-first approach  
-✅ **Performance Optimized** - External resource loading  
+✅ **Performance Optimized** - External resource loading
 
 ### User Experience
 
 ✅ **Professional Presentation** - Print-ready A4 format  
 ✅ **Interactive Visualizations** - Engaging data displays  
 ✅ **Accessibility Features** - Semantic HTML structure  
-✅ **Cross-browser Compatible** - Modern browser support  
+✅ **Cross-browser Compatible** - Modern browser support
 
 ### Maintainability
 
 ✅ **Clear Documentation** - Comprehensive guides  
 ✅ **Component Reusability** - DRY principles  
 ✅ **Version Control Ready** - Clean file organization  
-✅ **Scalable Codebase** - Easy to extend and modify  
+✅ **Scalable Codebase** - Easy to extend and modify
 
 ## 🤝 Contributing
 
