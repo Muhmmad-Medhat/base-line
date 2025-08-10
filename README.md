@@ -7,6 +7,7 @@
 This project is a multi-page web application that presents the results of a cybersecurity awareness baseline assessment conducted for organizations. The report includes executive summaries, detailed analytics, departmental breakdowns, risk assessments, and actionable recommendations.
 
 **Key Features:**
+
 - 📊 Interactive charts and data visualizations
 - 📄 Professional A4-formatted pages for print compatibility
 - 📱 Responsive design with mobile support
@@ -16,7 +17,7 @@ This project is a multi-page web application that presents the results of a cybe
 
 ## 🏗️ Project Structure
 
-```
+```text
 base-line/
 ├── index.html                      # Cover page (Entry point)
 ├── 2-page/index.html               # Table of Contents
@@ -82,38 +83,46 @@ base-line/
 ### Assessment Domains Covered
 
 **Digital and Online Security:**
+
 - Safe Browsing, Mobile Security, Online Shopping
 - Email Security, Wi-Fi Security, IoT Security
 
 **Information Protection and Data Security:**
+
 - Data Protection, Removable Media Security
 - Cybersecurity Hygiene, Secure Passwords
 
 **Social Engineering and Threat Awareness:**
+
 - Social Engineering, Types of Phishing
 - Social Media Security, Executive Awareness
 
 **Physical and Environmental Security:**
+
 - Secure Travelling, Meeting Security, Physical Security
 
 **Fraud and Embezzlement:**
+
 - Fraud detection and prevention strategies
 
 ## 🛠️ Technology Stack
 
 ### Frontend Technologies
+
 - **HTML5** - Semantic markup structure
 - **CSS3** - Modern styling with custom properties
 - **JavaScript (ES6+)** - Interactive functionality
 - **amCharts 4** - Professional data visualization library
 
 ### Architecture Principles
+
 - **BEM (Block Element Modifier)** - CSS naming convention
 - **ITCSS (Inverted Triangle CSS)** - Scalable CSS architecture
 - **Component-based design** - Modular and reusable components
 - **CSS Custom Properties** - Consistent theming system
 
 ### External Dependencies
+
 ```html
 <!-- amCharts 4 Resources -->
 <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
@@ -124,6 +133,7 @@ base-line/
 ## 🎨 Design System
 
 ### Color Palette
+
 ```css
 :root {
   --color-primary: #4dd0e1;        /* Light Blue */
@@ -135,6 +145,7 @@ base-line/
 ```
 
 ### Gradients
+
 ```css
 :root {
   --gradient-primary: linear-gradient(135deg, #4dd0e1 0%, #00bcd4 100%);
@@ -144,10 +155,12 @@ base-line/
 ```
 
 ### Typography Scale
+
 - **Font Family:** 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 - **Font Weights:** 300 (Light), 400 (Normal), 500 (Medium), 600 (Semibold), 700 (Bold)
 
 ### Spacing System
+
 ```css
 :root {
   --spacing-xs: 5px;    --spacing-sm: 10px;   --spacing-md: 15px;
@@ -155,9 +168,33 @@ base-line/
 }
 ```
 
-## � Getting Started
+## ✒️ Typography & Fonts
+
+This project uses a modular typography system with a primary font variable. Google "Gothic A1" has been integrated for optional use without altering the current default typography.
+
+### Fonts
+
+- Default: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
+- Optional: `Gothic A1` via Google Fonts
+
+### How it’s wired
+
+- Import added in `styles/main.css`:
+  - `@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800;900&display=swap');`
+- Variable exposed in `styles/base/variables.css`:
+  - `--font-family-gothic: 'Gothic A1', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;`
+- Utility in `styles/utils/layout.css`:
+  - `.font-gothic { font-family: var(--font-family-gothic); }`
+
+### Usage
+
+- Opt-in per element/section: add `class="font-gothic"`
+- Make it the default (optional): set `--font-family-primary: var(--font-family-gothic);` in `variables.css`
+
+## 🚀 Getting Started
 
 ### Prerequisites
+
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 - Local web server (for proper CORS handling of external resources)
 - Internet connection (for amCharts CDN resources)
@@ -165,13 +202,15 @@ base-line/
 ### Installation & Setup
 
 1. **Clone or download the project**
-   ```bash
+
+  ```bash
    git clone https://github.com/Muhmmad-Medhat/base-line.git
    cd base-line
    ```
 
-2. **Serve the project locally**
-   ```bash
+1. **Serve the project locally**
+
+  ```bash
    # Using Python
    python -m http.server 8000
    
@@ -182,36 +221,43 @@ base-line/
    php -S localhost:8000
    ```
 
-3. **Open in browser**
-   Navigate to `http://localhost:8000` to view the cover page
+1. **Open in browser**
+
+  Navigate to `http://localhost:8000` to view the cover page
 
 ### Page Navigation
+
 - **Cover Page:** `index.html`
 - **Individual Pages:** `{page-number}-page/index.html`
 - **Example:** `4-page/index.html` for Executive Summary
 
-## � Interactive Features
+## 📊 Interactive Features
 
 ### Chart Types & Implementation
 
-**Executive Summary (Page 4)**
+#### Executive Summary (Page 4)
+
 - Participation donut charts with 3D effects
 - Score visualization with percentage displays
 - Implementation: `js/page4-charts.js`
 
-**Department Analysis (Pages 5, 8, 10)**
+#### Department Analysis (Pages 5, 8, 10)
+
 - 3D column charts for awareness levels
 - Stacked bar charts for category distribution
 - Risk assessment visualizations
 - Implementation: `js/page5-charts.js`, `js/page8-charts.js`, `js/page10-charts.js`
 
-**Category Breakdown (Page 6)**
+#### Category Breakdown (Page 6)
+
 - Interactive progress circles
 - Category-wise performance indicators
 - Implementation: `js/page6-charts.js`
 
 ### Chart Customization
+
 All charts include:
+
 - ✅ Responsive design
 - ✅ Custom color schemes matching brand
 - ✅ Interactive tooltips and animations
@@ -221,6 +267,7 @@ All charts include:
 ## 🎯 Assessment Metrics
 
 ### Key Performance Indicators
+
 - **Overall Awareness Level:** 77%
 - **Participation Rate:** 87.79% (187/213 employees)
 - **Assessment Coverage:** 54 questions across 18 domains
@@ -228,6 +275,7 @@ All charts include:
 - **Risk Categories:** 5 major security categories
 
 ### Risk Level Classifications
+
 - **High (90-100%)** - Excellent awareness
 - **Moderate (80-89%)** - Good awareness with minor gaps
 - **Low (70-79%)** - Requires focused training
@@ -237,7 +285,8 @@ All charts include:
 
 ### Code Organization Principles
 
-**CSS Architecture (BEM + ITCSS)**
+### CSS Architecture (BEM + ITCSS)
+
 ```css
 /* Block */
 .header { }
@@ -251,13 +300,16 @@ All charts include:
 .header--center { }
 ```
 
-**File Naming Conventions**
+### File Naming Conventions
+
 - Components: `component-name.css`
 - Pages: `page-{number}.css`
 - JavaScript: `page{number}-charts.js`
 
 ### Component Structure
+
 Each page follows consistent structure:
+
 ```html
 <div class="a4-container">
   <!-- Background decorations -->
@@ -284,12 +336,14 @@ Each page follows consistent structure:
 ## 📈 Performance Optimizations
 
 ### Loading Strategy
+
 - **CSS:** Single bundle via imports for optimal caching
 - **JavaScript:** Page-specific loading to reduce initial bundle size
 - **Charts:** CDN delivery with local fallbacks
 - **Images:** Optimized background decorations via CSS
 
 ### Print Optimization
+
 ```css
 @media print {
   @page {
@@ -307,6 +361,7 @@ Each page follows consistent structure:
 ## 🚀 Key Achievements
 
 ### Technical Excellence
+
 ✅ **Zero Inline Styles/Scripts** - Complete separation of concerns  
 ✅ **Modular Architecture** - 15+ organized CSS components  
 ✅ **BEM Implementation** - Consistent naming throughout  
@@ -314,12 +369,14 @@ Each page follows consistent structure:
 ✅ **Performance Optimized** - External resource loading  
 
 ### User Experience
+
 ✅ **Professional Presentation** - Print-ready A4 format  
 ✅ **Interactive Visualizations** - Engaging data displays  
 ✅ **Accessibility Features** - Semantic HTML structure  
 ✅ **Cross-browser Compatible** - Modern browser support  
 
 ### Maintainability
+
 ✅ **Clear Documentation** - Comprehensive guides  
 ✅ **Component Reusability** - DRY principles  
 ✅ **Version Control Ready** - Clean file organization  
@@ -328,13 +385,15 @@ Each page follows consistent structure:
 ## 🤝 Contributing
 
 ### Development Setup
+
 1. Follow installation instructions above
-2. Make changes to relevant files
-3. Test across different browsers and devices
-4. Ensure print compatibility
-5. Validate chart functionality
+1. Make changes to relevant files
+1. Test across different browsers and devices
+1. Ensure print compatibility
+1. Validate chart functionality
 
 ### Code Standards
+
 - Follow BEM naming conventions
 - Use CSS custom properties for theming
 - Maintain responsive design principles
