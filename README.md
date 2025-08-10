@@ -296,20 +296,27 @@ Each page follows consistent structure:
 ```html
 <div class="a4-container">
   <!-- Background decorations -->
-  <div class="bg-decoration bg-decoration--circle"></div>
-
-  <div class="a4-container__content a4-container__content--padded-large">
+  <div
+    class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--top-right"></div>
+  <div
+    class="bg-decoration bg-decoration--circle bg-decoration--circle-large bg-decoration--bottom-left"></div>
+  <div
+    class="a4-container__content a4-container__content--padded-large layout-flex layout-flex--column">
     <header class="header header--start">
-      <div class="header__logo typography__logo">ZiSoft</div>
+      <div class="header__logo typography__logo typography__logo--large">
+        ZiSoft
+      </div>
     </header>
 
     <main><!-- Page content --></main>
-
+    <!-- footer -->
     <footer class="footer">
-      <div class="footer__title">Report Title</div>
+      <div class="footer__title">
+        Cybersecurity Awareness Baseline Assessment Report
+      </div>
       <div class="footer__content">
         <span>PAGE NO.</span>
-        <div class="footer__page-number">X</div>
+        <div class="footer__page-number">1</div>
       </div>
     </footer>
   </div>
