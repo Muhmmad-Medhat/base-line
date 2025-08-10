@@ -266,22 +266,21 @@ All charts include:
 
 ### CSS Architecture (BEM + ITCSS)
 
-```css
-/* Block */
-.header {
-}
+Header is the block; the button is an element; button state is a modifier.
 
-/* Element */
-.header__logo {
-}
-.header__content {
-}
-
-/* Modifier */
-.header--start {
-}
-.header--center {
-}
+```html
+<header class="header header--start">
+  <button class="header__button">Normal button</button>
+  <button class="header__button header__button--state-success">
+    Success button
+  </button>
+  <button class="header__button header__button--state-danger">
+    Danger button
+  </button>
+  <!-- Other header content ... -->
+  <div class="header__content">...</div>
+  <div class="header__logo">ZiSoft</div>
+</header>
 ```
 
 ### File Naming Conventions
