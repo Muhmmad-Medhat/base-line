@@ -61,6 +61,11 @@
   width: 100%;
 }
 
+/* Typography Utilities */
+.font-gothic {
+  font-family: var(--font-family-gothic);
+}
+
 .layout-width--auto {
   width: auto;
 }
