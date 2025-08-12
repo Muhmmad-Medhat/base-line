@@ -36,8 +36,8 @@ base-line/
 │   ├── page6-charts.js             # Category awareness charts
 │   ├── page8-charts.js             # Stacked distribution charts
 │   └── page10-charts.js            # Risk assessment charts
-└── styles/                         # Modular CSS architecture
-    ├── main.css                    # Main entry point with imports
+└── styles/                         # Modular CSS architecture (consolidated)
+  ├── main.css                    # Single consolidated stylesheet used by all pages
     ├── base/                       # Foundation styles
     │   ├── variables.css           # CSS custom properties
     │   ├── reset.css              # Browser reset styles
@@ -149,26 +149,35 @@ base-line/
 
 ## ✒️ Typography & Fonts
 
-This project uses a modular typography system with a primary font variable. Google "Gothic A1" has been integrated for optional use without altering the current default typography.
+This project uses a primary system font stack by default and optionally loads Google "Gothic A1" via HTML, not via CSS `@import`.
 
 ### Fonts
 
 - Default: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
-- Optional: `Gothic A1` via Google Fonts
+- Optional: `Gothic A1` (loaded with `<link>` + preconnect; `display=swap` for performance)
 
 ### How it’s wired
 
-- Import added in `styles/main.css`:
-  - `@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800;900&display=swap');`
-- Variable exposed in `styles/base/variables.css`:
+- HTML (each page head):
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles/main.css" />
+```
+
+Note: For sub-pages inside folders (e.g., `4-page/`), use `href="../styles/main.css"`.
+
+- Variables in CSS (exposed in `styles/main.css`):
   - `--font-family-gothic: 'Gothic A1', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;`
-- Utility in `styles/utils/layout.css`:
+- Utility class (in `styles/main.css`):
   - `.font-gothic { font-family: var(--font-family-gothic); }`
 
 ### Usage
 
 - Opt-in per element/section: add `class="font-gothic"`
-- Make it the default (optional): set `--font-family-primary: var(--font-family-gothic);` in `variables.css`
+- Make it the default (optional): set `--font-family-primary: var(--font-family-gothic);` in the CSS variables.
 
 ## 🚀 Getting Started
 
@@ -327,7 +336,7 @@ Each page follows consistent structure:
 
 ### Loading Strategy
 
-- **CSS:** Single bundle via imports for optimal caching
+- **CSS:** Single consolidated stylesheet (`styles/main.css`) for optimal caching
 - **JavaScript:** Page-specific loading to reduce initial bundle size
 - **Charts:** CDN delivery with local fallbacks
 - **Images:** Optimized background decorations via CSS
@@ -356,7 +365,7 @@ Each page follows consistent structure:
 ✅ **Modular Architecture** - 15+ organized CSS components  
 ✅ **BEM Implementation** - Consistent naming throughout  
 ✅ **Responsive Design** - Mobile-first approach  
-✅ **Performance Optimized** - External resource loading
+✅ **Performance Optimized** - External resource loading, Google Fonts via `<link>` with preconnect and `display=swap`
 
 ### User Experience
 
@@ -389,6 +398,14 @@ Each page follows consistent structure:
 - Maintain responsive design principles
 - Include fallbacks for JavaScript features
 - Test print functionality
+
+## 📝 Implementation Notes (Consolidated CSS & Fonts)
+
+- Removed Google Fonts `@import` from CSS; fonts are now loaded via HTML `<link>` tags with `rel=preconnect` hints and `display=swap`.
+- Consolidated all modular CSS into a single `styles/main.css` file used by every page; order preserved to maintain visual parity.
+- The original modular files remain in `styles/` for maintainability, but runtime references point only to `styles/main.css`.
+- Accessibility/performance: non-blocking font load pattern and system font fallback ensure quick first paint.
+- Git workflow: changes implemented on branch `chore/consolidate-css-remove-google-fonts` with focused commits and PR description documenting no intentional visual changes besides font loading approach.
 
 ## 📄 License
 
