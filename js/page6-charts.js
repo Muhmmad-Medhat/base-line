@@ -106,15 +106,23 @@ function drawColumnChart() {
       return am4core.color(target.dataItem.dataContext.color);
     });
 
-    // Add value labels on top of columns (matching 5th page style)
-    series.columns.template.adapter.add('tooltipText', '');
+    // Configure data labels (value on top, same color as column)
     var labelBullet = series.bullets.push(new am4charts.LabelBullet());
     labelBullet.label.text = '{valueY}%';
     labelBullet.label.fontSize = 14;
     labelBullet.label.fontWeight = '700';
-    labelBullet.label.fill = am4core.color('#ffffff');
-    labelBullet.locationY = 0.5;
+    // labelBullet.locationY = 0.5; // top of the column
+    labelBullet.dy = -12; // place above the column
     labelBullet.label.hideOversized = false;
+    labelBullet.label.truncate = false;
+    // Match label color to column color
+    labelBullet.label.adapter.add('fill', function (fill, target) {
+      return am4core.color(
+        target.dataItem && target.dataItem.dataContext
+          ? target.dataItem.dataContext.color
+          : '#1b0de5ff'
+      );
+    });
 
     // Disable cursor
     chart.cursor = undefined;

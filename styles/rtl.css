@@ -1,0 +1,106 @@
+/* RTL overrides for Cybersecurity Awareness Report
+   Scope: only applies when <html dir="rtl"> is set
+   Note: Keep this file lightweight and override only directional rules. */
+
+html[dir='rtl'] {
+  direction: rtl;
+}
+
+/* Utilities: keep explicit left/right utilities semantic; do not override them */
+
+/* Layout and common elements */
+html[dir='rtl'] .a4-container__content {
+  /* Nothing forced here; allow inherited direction */
+}
+
+/* Cover page adjustments */
+html[dir='rtl'] .cover-page__main {
+  margin-right: 160px;
+  margin-left: 0;
+}
+@media (max-width: 768px) {
+  html[dir='rtl'] .cover-page__main {
+    padding-left: 0; /* mirror of padding-right: 0 in LTR */
+  }
+}
+
+/* Table of contents bullets and spacing */
+html[dir='rtl'] .toc__item--main-section {
+  margin-left: 160px; /* mirror of margin-right */
+  margin-right: 0;
+}
+html[dir='rtl'] .toc__item--main-section::before {
+  right: -15px;
+  left: auto;
+}
+html[dir='rtl'] .toc__item--sub-section {
+  margin-right: var(--spacing-lg); /* mirror of margin-left */
+  margin-left: 160px;
+}
+
+/* Category details indentation */
+html[dir='rtl'] .category-details {
+  margin-right: 40px; /* mirror of margin-left */
+  margin-left: 0;
+}
+
+/* Insight/comprehensive block accent border */
+html[dir='rtl'] .comprehensive-view {
+  border-right: 4px solid var(--color-secondary);
+  border-left: none;
+}
+
+/* Domain/legend spacing (page 10) */
+html[dir='rtl'] .domain-section .chart-legend {
+  margin: 0 var(--spacing-lg) 0 0; /* mirror of margin-left */
+}
+
+/* Data matrix header alignment */
+html[dir='rtl'] .data-matrix__header-cell {
+  text-align: right;
+}
+
+/* Background decorations: mirror key positions for RTL */
+html[dir='rtl'] .bg-decoration--image-start {
+  transform: scaleX(-1);
+}
+
+html[dir='rtl'] .bg-decoration--top-right {
+  left: -100px;
+  right: auto;
+}
+html[dir='rtl'] .bg-decoration--bottom-left {
+  right: -90px;
+  left: auto;
+}
+html[dir='rtl'] .bg-decoration--bottom-right {
+  left: 0;
+  right: auto;
+  transform: translate(-40px, 0);
+}
+html[dir='rtl'] .bg-decoration--curve-right {
+  left: 0;
+  right: auto;
+  border-bottom-right-radius: 100mm;
+  border-top-right-radius: 100mm;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  transform: translateX(-50mm);
+}
+html[dir='rtl'] .bg-decoration--watermark,
+html[dir='rtl'] .toc__watermark {
+  left: -60mm;
+  right: auto;
+}
+
+/* Domain section decorative background extent */
+html[dir='rtl'] .domain-section::before {
+  right: calc(var(--a4-padding-large) * -1);
+  left: calc(var(--a4-padding-large) * -1);
+}
+
+/* footer adjustments */
+html[dir='rtl'] .footer {
+  border-top-right-radius: 0;
+  border-top-left-radius: var(--radius-large);
+}
