@@ -97,14 +97,23 @@ function drawDepartmentChart() {
       return am4core.color(target.dataItem.dataContext.color);
     });
 
-    // Configure data labels
+    // Configure data labels (value on top, same color as column)
     var labelBullet = series.bullets.push(new am4charts.LabelBullet());
     labelBullet.label.text = '{valueY}%';
     labelBullet.label.fontSize = 14;
     labelBullet.label.fontWeight = '700';
-    labelBullet.label.fill = am4core.color('#ffffff');
-    labelBullet.locationY = 0.5;
+    // labelBullet.locationY = 0.5; // top of the column
+    labelBullet.dy = -12; // place above the column
     labelBullet.label.hideOversized = false;
+    labelBullet.label.truncate = false;
+    // Match label color to column color
+    labelBullet.label.adapter.add('fill', function (fill, target) {
+      return am4core.color(
+        target.dataItem && target.dataItem.dataContext
+          ? target.dataItem.dataContext.color
+          : '#1b0de5ff'
+      );
+    });
 
     // Add hover effects
     series.columns.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
