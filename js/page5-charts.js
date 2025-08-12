@@ -14,6 +14,7 @@ function drawDepartmentChart() {
   try {
     // Create 3D column chart
     var chart = am4core.create('departmentChart', am4charts.XYChart3D);
+    chart.rtl = true;
 
     // Set chart data
     chart.data = [

@@ -14,6 +14,7 @@ function drawStackedBarChart() {
   try {
     // Create XY chart
     var chart = am4core.create('stackedChart', am4charts.XYChart);
+    chart.rtl = true;
 
     // Set chart data
     chart.data = [

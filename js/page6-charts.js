@@ -14,6 +14,7 @@ function drawColumnChart() {
   try {
     // Create 3D column chart
     var chart = am4core.create('columnChart', am4charts.XYChart3D);
+    chart.rtl = true;
 
     // Set chart data with colors matching 5th page style
     chart.data = [

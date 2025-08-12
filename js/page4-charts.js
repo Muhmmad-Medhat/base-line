@@ -15,6 +15,7 @@ function drawParticipationChart() {
   try {
     // Create 3D pie chart
     var chart = am4core.create('participationChart', am4charts.PieChart3D);
+    chart.rtl = true;
 
     // Set chart data
     chart.data = [
