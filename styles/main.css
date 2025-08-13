@@ -80,6 +80,10 @@
   --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-family-gothic: 'Gothic A1', 'Segoe UI', Tahoma, Geneva, Verdana,
     sans-serif;
+  --font-family-amiri: 'Amiri', Georgia, 'Times New Roman', serif;
+  --font-family-roboto: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto,
+    Arial, sans-serif;
+  --font-family-galada: 'Galada', 'Comic Sans MS', cursive;
   --font-primary: var(--font-family-primary);
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -2225,6 +2229,15 @@ body {
 }
 .font-gothic {
   font-family: var(--font-family-gothic);
+}
+.font-amiri {
+  font-family: var(--font-family-amiri);
+}
+.font-roboto {
+  font-family: var(--font-family-roboto);
+}
+.font-galada {
+  font-family: var(--font-family-galada);
 }
 .layout-width--auto {
   width: auto;
