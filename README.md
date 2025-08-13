@@ -179,6 +179,8 @@ Note: For sub-pages inside folders (e.g., `4-page/`), use `href="../styles/main.
 - Utility class (in `styles/main.css`):
   - `.font-gothic { font-family: var(--font-family-gothic); }`
 
+Rationale: Fonts are loaded via CSS `@import` for a single source of truth (simpler templating). If you need best-possible first paint performance, switch to HTML `<link>` with `preconnect` and remove the `@import` lines.
+
 ### Usage
 
 - Opt-in per element/section: add `class="font-gothic"`
@@ -343,9 +345,22 @@ Each page follows consistent structure:
 
 - **CSS:** Single bundle via imports for optimal caching
 - **RTL:** `styles/utils/rtl.css` is imported by `styles/main.css` and only applies when `html[dir="rtl"]` is set
+
 - **JavaScript:** Page-specific loading to reduce initial bundle size
 - **Charts:** CDN delivery with local fallbacks
 - **Images:** Optimized background decorations via CSS
+
+### RTL usage
+
+To enable RTL layout, set the page direction:
+
+```html
+<html lang="ar" dir="rtl">
+  <!-- ... -->
+</html>
+```
+
+All RTL overrides are scoped to `html[dir="rtl"]`, so they’re inert in LTR.
 
 ### Print Optimization
 
@@ -362,6 +377,14 @@ Each page follows consistent structure:
   }
 }
 ```
+
+## 🧩 Troubleshooting
+
+- Styles not applied on some pages: check the relative path to `styles/main.css`.
+  - Root page: `./styles/main.css`
+  - Subpages (e.g., `4-page/index.html`): `../styles/main.css`
+- Fonts not loading: ensure the `@import` lines are at the very top of `styles/main.css` (before other rules/imports).
+- Charts not rendering: verify internet connectivity for amCharts CDN or provide a local fallback.
 
 ## 🚀 Key Achievements
 
