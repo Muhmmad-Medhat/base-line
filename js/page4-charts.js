@@ -17,29 +17,24 @@ function drawParticipationChart() {
   try {
     // Create 3D pie chart
     var chart = am4core.create('participationChart', am4charts.PieChart3D);
-    chart.rtl = true;
-  chart.interactionsEnabled = false;
+    chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
+    chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
 
     // Set chart data
-    chart.data = [
-      {
-        category: 'Completed Assessment',
-        value: 187,
-        color: am4core.color('#4dd0e1'),
-      },
-      {
-        category: 'Did not finish',
-        value: 26,
-        color: am4core.color('#00838f'),
-      },
-    ];
+    if (window.ChartStore) {
+      chart.data = ChartStore.DATA.participation.map(function (d) {
+        return { category: d.category, value: d.value, color: am4core.color(d.color) };
+      });
+    }
 
     // Set inner radius to create donut effect
-    chart.innerRadius = am4core.percent(50);
+    chart.innerRadius = am4core.percent(
+      (window.ChartStore && ChartStore.DEFAULTS.pie3d.innerRadiusPct) || 50
+    );
 
     // Configure 3D settings
-    chart.depth3D = 30;
-    chart.angle = 15;
+    chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.pie3d.depth3D) || 30;
+    chart.angle = (window.ChartStore && ChartStore.DEFAULTS.pie3d.angle) || 15;
 
     // Hide legend
     chart.legend = undefined;
@@ -48,9 +43,9 @@ function drawParticipationChart() {
     var pieSeries = chart.series.push(new am4charts.PieSeries3D());
     pieSeries.dataFields.value = 'value';
     pieSeries.dataFields.category = 'category';
-  // Disable interactivity on slices/labels
-  pieSeries.slices.template.interactionsEnabled = false;
-  pieSeries.labels.template.interactionsEnabled = false;
+    // Disable interactivity on slices/labels
+    pieSeries.slices.template.interactionsEnabled = false;
+    pieSeries.labels.template.interactionsEnabled = false;
 
     // Configure slice appearance
     pieSeries.slices.template.propertyFields.fill = 'color';
@@ -91,28 +86,23 @@ function drawScoreChart() {
   try {
     // Create 3D pie chart
     var chart = am4core.create('scoreChart', am4charts.PieChart3D);
-  chart.interactionsEnabled = false;
+    chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
 
     // Set chart data
-    chart.data = [
-      {
-        category: 'Achieved',
-        value: 77,
-        color: am4core.color('#4dd0e1'),
-      },
-      {
-        category: 'Remaining',
-        value: 23,
-        color: am4core.color('#00838f'),
-      },
-    ];
+    if (window.ChartStore) {
+      chart.data = ChartStore.DATA.score.map(function (d) {
+        return { category: d.category, value: d.value, color: am4core.color(d.color) };
+      });
+    }
 
     // Set inner radius to create donut effect
-    chart.innerRadius = am4core.percent(60);
+    chart.innerRadius = am4core.percent(
+      (window.ChartStore && ChartStore.DEFAULTS.scorePie3d.innerRadiusPct) || 60
+    );
 
     // Configure 3D settings
-    chart.depth3D = 25;
-    chart.angle = 15;
+    chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.scorePie3d.depth3D) || 25;
+    chart.angle = (window.ChartStore && ChartStore.DEFAULTS.scorePie3d.angle) || 15;
 
     // Hide legend
     chart.legend = undefined;
@@ -121,9 +111,9 @@ function drawScoreChart() {
     var pieSeries = chart.series.push(new am4charts.PieSeries3D());
     pieSeries.dataFields.value = 'value';
     pieSeries.dataFields.category = 'category';
-  // Disable interactivity on slices/labels
-  pieSeries.slices.template.interactionsEnabled = false;
-  pieSeries.labels.template.interactionsEnabled = false;
+    // Disable interactivity on slices/labels
+    pieSeries.slices.template.interactionsEnabled = false;
+    pieSeries.labels.template.interactionsEnabled = false;
 
     // Configure slice appearance
     pieSeries.slices.template.propertyFields.fill = 'color';
