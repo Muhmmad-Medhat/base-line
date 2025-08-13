@@ -77,7 +77,13 @@
   --gradient-background: linear-gradient(135deg, #f8f9fb 0%, #e8f4f8 100%);
 
   /* Typography */
-  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Default type stacks (Latin/English vs Arabic) */
+  --font-family-english: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana,
+    sans-serif;
+  --font-family-arabic: 'Amiri', 'Noto Naskh Arabic', 'Segoe UI', Tahoma, serif;
+
+  /* App-wide font tokens */
+  --font-family-primary: var(--font-family-english);
   --font-family-gothic: 'Gothic A1', 'Segoe UI', Tahoma, Geneva, Verdana,
     sans-serif;
   --font-primary: var(--font-family-primary);
@@ -243,6 +249,17 @@ body {
 .typography__highlight {
   color: var(--color-primary-dark);
   font-weight: var(--font-weight-bold);
+}
+
+/* --------------------------------------------------------------------------
+  Font utilities
+  -------------------------------------------------------------------------- */
+.font-roboto {
+  font-family: var(--font-family-english);
+}
+
+.font-amiri {
+  font-family: var(--font-family-arabic);
 }
 
 /* ==========================================================================
@@ -2293,6 +2310,10 @@ body {
 
 html[dir='rtl'] {
   direction: rtl;
+}
+/* Use Arabic font stack by default in RTL context */
+html[dir='rtl'] body {
+  font-family: var(--font-family-arabic);
 }
 
 /* Utilities: keep explicit left/right utilities semantic; do not override them */

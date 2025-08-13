@@ -5,6 +5,11 @@
 html[dir='rtl'] {
   direction: rtl;
 }
+/* Use Arabic font stack by default in RTL context */
+html[dir='rtl'] body {
+  font-family: var(--font-family-arabic);
+}
+
 
 /* Utilities: keep explicit left/right utilities semantic; do not override them */
 
