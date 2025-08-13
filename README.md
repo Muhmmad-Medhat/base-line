@@ -31,7 +31,6 @@ base-line/
 ├── 10-page/index.html              # Detailed Results & Risk Analysis
 ├── 11-page/index.html              # Recommendations
 ├── js/                             # External JavaScript files
-│   ├── main.js                     # Centralized chart data/config (ChartStore)
 │   ├── page4-charts.js             # Executive Summary charts
 │   ├── page5-charts.js             # Department awareness charts
 │   ├── page6-charts.js             # Category awareness charts
@@ -259,71 +258,6 @@ All charts include:
 - ✅ Interactive tooltips and animations
 - ✅ Fallback content for accessibility
 - ✅ Print-friendly styling
-
-## 📦 Centralized Chart Data (ChartStore)
-
-All chart datasets, color maps, and shared defaults are centralized in `js/main.js` as a global `ChartStore` object to keep things consistent and easy to maintain.
-
-### Structure
-
-`window.ChartStore` exposes:
-
-- `COLORS`: Base brand colors used across charts
-- `RISK_COLORS`: Color mapping for risk levels
-- `CATEGORY_COLORS`: Colors for page 8 stacked categories
-- `DEFAULTS`: Common chart defaults (RTL, interactivity off, 3D settings)
-- `DATA`: Consolidated datasets used by the pages
-
-Example (simplified):
-
-```js
-window.ChartStore = {
-  COLORS: { primary: '#00838f', secondary: '#4dd0e1' /* ... */ },
-  DEFAULTS: {
-    rtl: true,
-    interactivity: false,
-    pie3d: { depth3D: 30, angle: 15, innerRadiusPct: 50 },
-    scorePie3d: { depth3D: 25, angle: 15, innerRadiusPct: 60 },
-    xy3d: { angle: 30, depth3D: 60, column: { widthPercent: 30, maxWidth: 50, depth3D: 20, angle3D: 10 } }
-  },
-  DATA: {
-    participation: [ { category: 'Completed Assessment', value: 187, color: '#4dd0e1' } ],
-    score: [ { category: 'Achieved', value: 77, color: '#4dd0e1' } ],
-    departmentAwareness: [ /* page 5 */ ],
-    categoryAwareness: [ /* page 6 */ ],
-    stackedDistribution: [ /* page 8 */ ],
-    risk: [ /* page 10 */ ],
-    departmentScores: [ /* page 10 */ ]
-  }
-};
-```
-
-### How to use
-
-Include the store before page-specific scripts:
-
-```html
-<script src="../js/main.js"></script>
-<script src="../js/pageX-charts.js"></script>
-```
-
-Then read from the store in your chart code:
-
-```js
-chart.rtl = ChartStore.DEFAULTS.rtl;
-chart.interactionsEnabled = ChartStore.DEFAULTS.interactivity;
-chart.data = ChartStore.DATA.participation.map(d => ({
-  category: d.category,
-  value: d.value,
-  color: am4core.color(d.color)
-}));
-```
-
-Benefits
-
-- Single source of truth for datasets and constants
-- Easier updates without touching multiple files
-- Consistent visuals across all pages
 
 ## 🎯 Assessment Metrics
 

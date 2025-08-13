@@ -15,14 +15,45 @@ am4core.ready(function () {
 function drawStackedBarChart() {
   try {
     // Create XY chart
-  var chart = am4core.create('stackedChart', am4charts.XYChart);
-  chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('stackedChart', am4charts.XYChart);
+    chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
-    if (window.ChartStore) {
-      chart.data = ChartStore.DATA.stackedDistribution;
-    }
+    chart.data = [
+      {
+        department: 'Department #4',
+        digital: 35,
+        information: 20,
+        social: 10,
+        physical: 10,
+        fraud: 25,
+      },
+      {
+        department: 'Department #3',
+        digital: 10,
+        information: 25,
+        social: 10,
+        physical: 40,
+        fraud: 15,
+      },
+      {
+        department: 'Department #2',
+        digital: 25,
+        information: 20,
+        social: 5,
+        physical: 25,
+        fraud: 15,
+      },
+      {
+        department: 'Department #1',
+        digital: 10,
+        information: 25,
+        social: 20,
+        physical: 20,
+        fraud: 25,
+      },
+    ];
 
     // Create category axis (Y-axis for horizontal bars)
     var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
@@ -55,12 +86,12 @@ function drawStackedBarChart() {
     valueAxis.step = 10;
 
     // Create series for each category
-  function createSeries(field, name, color) {
+    function createSeries(field, name, color) {
       var series = chart.series.push(new am4charts.ColumnSeries());
       series.dataFields.valueX = field;
       series.dataFields.categoryY = 'department';
       series.name = name;
-  series.columns.template.fill = am4core.color(color);
+      series.columns.template.fill = am4core.color(color);
       series.columns.template.stroke = am4core.color('#ffffff');
       series.columns.template.strokeWidth = 1;
       series.columns.template.strokeOpacity = 0.8;
@@ -89,11 +120,19 @@ function drawStackedBarChart() {
     }
 
     // Create all series with matching colors
-  createSeries('digital', 'Digital and Online Security', (window.ChartStore && ChartStore.CATEGORY_COLORS.digital) || '#2196f3');
-  createSeries('information', 'Information Protection and Data Security', (window.ChartStore && ChartStore.CATEGORY_COLORS.information) || '#ff9800');
-  createSeries('social', 'Social Engineering and Threat Awareness', (window.ChartStore && ChartStore.CATEGORY_COLORS.social) || '#9e9e9e');
-  createSeries('physical', 'Physical and Environment Security', (window.ChartStore && ChartStore.CATEGORY_COLORS.physical) || '#ffc107');
-  createSeries('fraud', 'Fraud', (window.ChartStore && ChartStore.CATEGORY_COLORS.fraud) || '#4dd0e1');
+    createSeries('digital', 'Digital and Online Security', '#2196f3');
+    createSeries(
+      'information',
+      'Information Protection and Data Security',
+      '#ff9800'
+    );
+    createSeries(
+      'social',
+      'Social Engineering and Threat Awareness',
+      '#9e9e9e'
+    );
+    createSeries('physical', 'Physical and Environment Security', '#ffc107');
+    createSeries('fraud', 'Fraud', '#4dd0e1');
 
     // Disable cursor & interactivity
     chart.cursor = undefined;

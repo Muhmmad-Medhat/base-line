@@ -16,23 +16,35 @@ am4core.ready(function () {
 function drawRiskChart() {
   try {
     // Create 3D pie chart
-  var chart = am4core.create('riskChart', am4charts.PieChart3D);
-  chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('riskChart', am4charts.PieChart3D);
+    chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
-    if (window.ChartStore) {
-      chart.data = ChartStore.DATA.risk.map(function (d) {
-        return { category: d.category, value: d.value, color: am4core.color(d.color) };
-      });
-    }
+    chart.data = [
+      {
+        category: 'Very High Risk',
+        value: 33.3,
+        color: am4core.color('#00838f'),
+      },
+      {
+        category: 'High Risk',
+        value: 33.3,
+        color: am4core.color('#4dd0e1'),
+      },
+      {
+        category: 'Medium Risk',
+        value: 33.4,
+        color: am4core.color('#00bcd4'),
+      },
+    ];
 
     // Set inner radius to create donut effect
-  chart.innerRadius = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.pie3d.innerRadiusPct) || 40);
+    chart.innerRadius = am4core.percent(40);
 
     // Configure 3D settings
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.pie3d.depth3D) || 30;
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.pie3d.angle) || 15;
+    chart.depth3D = 30;
+    chart.angle = 15;
 
     // Hide legend
     chart.legend = undefined;
@@ -82,17 +94,26 @@ function drawRiskChart() {
 function drawDepartmentChart() {
   try {
     // Create 3D column chart
-  var chart = am4core.create('columnChart', am4charts.XYChart3D);
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('columnChart', am4charts.XYChart3D);
+  chart.interactionsEnabled = false;
 
     // Set chart data
-    if (window.ChartStore) {
-      chart.data = ChartStore.DATA.departmentScores;
-    }
+    chart.data = [
+      {
+        department: 'Rewan Department 1',
+        value: 55,
+        color: '#00838f',
+      },
+      {
+        department: 'Rewan Department 2',
+        value: 50,
+        color: '#4dd0e1',
+      },
+    ];
 
     // Configure 3D settings
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
+    chart.angle = 30;
+    chart.depth3D = 60;
 
     // Add padding to accommodate labels
     chart.paddingTop = 30;
@@ -148,10 +169,10 @@ function drawDepartmentChart() {
     series.columns.template.strokeOpacity = 0.8;
 
     // Configure 3D column appearance for uniform square look
-  series.columns.template.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 80;
-  series.columns.template.angle3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
-  series.columns.template.width = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 25);
-  series.columns.template.maxWidth = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 50;
+    series.columns.template.depth3D = 80;
+    series.columns.template.angle3D = 10;
+    series.columns.template.width = am4core.percent(25);
+    series.columns.template.maxWidth = 50;
 
     // Ensure columns have uniform appearance with equal proportions
     series.columns.template.column3D.stroke = am4core.color('#ffffff');

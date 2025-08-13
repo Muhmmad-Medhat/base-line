@@ -15,18 +15,42 @@ am4core.ready(function () {
 function drawColumnChart() {
   try {
     // Create 3D column chart
-  var chart = am4core.create('columnChart', am4charts.XYChart3D);
-  chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('columnChart', am4charts.XYChart3D);
+    chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data with colors matching 5th page style
-    if (window.ChartStore) {
-      chart.data = ChartStore.DATA.categoryAwareness;
-    }
+    chart.data = [
+      {
+        category: 'Digital and\nInformation',
+        value: 92,
+        color: '#4caf50', // Green for high performance (90-100)
+      },
+      {
+        category: 'Information\nProtection and\nData Security',
+        value: 23,
+        color: '#f44336', // Red for very low performance (0-69)
+      },
+      {
+        category: 'Social Engineering\nThreat Awareness',
+        value: 77,
+        color: '#f44336', // Red for low performance (70-79)
+      },
+      {
+        category: 'Physical and\nEnvironmental\nSecurity',
+        value: 81,
+        color: '#ff9800', // Orange for moderate performance (80-89)
+      },
+      {
+        category: 'Fraud and\nEmbezzlement',
+        value: 66,
+        color: '#f44336', // Red for very low performance (0-69)
+      },
+    ];
 
     // Configure 3D settings
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
+    chart.angle = 30;
+    chart.depth3D = 60;
 
     // Create category axis with grid lines (matching 5th page style)
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -77,12 +101,12 @@ function drawColumnChart() {
     series.columns.template.strokeOpacity = 0.8;
 
     // Minimize column width to make them taller and narrower (matching 5th page)
-  series.columns.template.width = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 30);
-  series.columns.template.maxWidth = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 40;
+    series.columns.template.width = am4core.percent(30);
+    series.columns.template.maxWidth = 40;
 
     // Configure 3D column appearance (matching 5th page)
-  series.columns.template.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 20;
-  series.columns.template.angle3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
+    series.columns.template.depth3D = 20;
+    series.columns.template.angle3D = 10;
 
     // Add data labels on top of columns
     series.columns.template.adapter.add('fill', function (fill, target) {

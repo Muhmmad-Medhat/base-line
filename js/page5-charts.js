@@ -15,18 +15,41 @@ am4core.ready(function () {
 function drawDepartmentChart() {
   try {
     // Create 3D column chart
-  var chart = am4core.create('departmentChart', am4charts.XYChart3D);
-  chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('departmentChart', am4charts.XYChart3D);
+    chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
-    if (window.ChartStore) {
-      chart.data = ChartStore.DATA.departmentAwareness;
-    }
+    chart.data = [
+      {
+        department: 'Department #1',
+        value: 94,
+        color: '#4caf50', // Green for high performance
+        riskLevel: 'High',
+      },
+      {
+        department: 'Department #2',
+        value: 43,
+        color: '#f44336', // Red for low performance
+        riskLevel: 'Very Low',
+      },
+      {
+        department: 'Department #3',
+        value: 72,
+        color: '#f44336', // Red for low performance
+        riskLevel: 'Low',
+      },
+      {
+        department: 'Department #4',
+        value: 81,
+        color: '#ff9800', // Orange/Yellow for moderate performance
+        riskLevel: 'Moderate',
+      },
+    ];
 
     // Configure 3D settings
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
+    chart.angle = 30;
+    chart.depth3D = 60;
 
     // Create category axis (X axis)
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -66,12 +89,12 @@ function drawDepartmentChart() {
     series.columns.template.strokeOpacity = 0.8;
 
     // Minimize column width to make them taller and narrower
-  series.columns.template.width = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 30);
-  series.columns.template.maxWidth = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 40;
+    series.columns.template.width = am4core.percent(30);
+    series.columns.template.maxWidth = 40;
 
     // Add 3D depth and styling
-  series.columns.template.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 20;
-  series.columns.template.angle3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
+    series.columns.template.depth3D = 20;
+    series.columns.template.angle3D = 10;
 
     // Add data labels on top of columns
     series.columns.template.adapter.add('fill', function (fill, target) {
