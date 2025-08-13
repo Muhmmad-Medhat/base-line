@@ -36,8 +36,8 @@ base-line/
 │   ├── page6-charts.js             # Category awareness charts
 │   ├── page8-charts.js             # Stacked distribution charts
 │   └── page10-charts.js            # Risk assessment charts
-└── styles/                         # Modular CSS architecture (consolidated)
-  ├── main.css                    # Single consolidated stylesheet used by all pages
+└── styles/                         # Modular CSS architecture
+    ├── main.css                    # Main entry point with imports
     ├── base/                       # Foundation styles
     │   ├── variables.css           # CSS custom properties
     │   ├── reset.css              # Browser reset styles
@@ -177,7 +177,7 @@ Note: For sub-pages inside folders (e.g., `4-page/`), use `href="../styles/main.
 ### Usage
 
 - Opt-in per element/section: add `class="font-gothic"`
-- Make it the default (optional): set `--font-family-primary: var(--font-family-gothic);` in the CSS variables.
+- Make it the default (optional): set `--font-family-primary: var(--font-family-gothic);` in `variables.css`
 
 ## 🚀 Getting Started
 
@@ -336,7 +336,7 @@ Each page follows consistent structure:
 
 ### Loading Strategy
 
-- **CSS:** Single consolidated stylesheet (`styles/main.css`) for optimal caching
+- **CSS:** Single bundle via imports for optimal caching
 - **JavaScript:** Page-specific loading to reduce initial bundle size
 - **Charts:** CDN delivery with local fallbacks
 - **Images:** Optimized background decorations via CSS
@@ -365,7 +365,7 @@ Each page follows consistent structure:
 ✅ **Modular Architecture** - 15+ organized CSS components  
 ✅ **BEM Implementation** - Consistent naming throughout  
 ✅ **Responsive Design** - Mobile-first approach  
-✅ **Performance Optimized** - External resource loading, Google Fonts via `<link>` with preconnect and `display=swap`
+✅ **Performance Optimized** - External resource loading
 
 ### User Experience
 
@@ -398,14 +398,6 @@ Each page follows consistent structure:
 - Maintain responsive design principles
 - Include fallbacks for JavaScript features
 - Test print functionality
-
-## 📝 Implementation Notes (Consolidated CSS & Fonts)
-
-- Removed Google Fonts `@import` from CSS; fonts are now loaded via HTML `<link>` tags with `rel=preconnect` hints and `display=swap`.
-- Consolidated all modular CSS into a single `styles/main.css` file used by every page; order preserved to maintain visual parity.
-- The original modular files remain in `styles/` for maintainability, but runtime references point only to `styles/main.css`.
-- Accessibility/performance: non-blocking font load pattern and system font fallback ensure quick first paint.
-- Git workflow: changes implemented on branch `chore/consolidate-css-remove-google-fonts` with focused commits and PR description documenting no intentional visual changes besides font loading approach.
 
 ## 📄 License
 
