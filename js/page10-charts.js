@@ -3,8 +3,10 @@
 
 // Initialize amCharts when ready
 am4core.ready(function () {
-  // Use animated theme
-  am4core.useTheme(am4themes_animated);
+  // Disable animations globally
+  if (am4core && am4core.options) {
+    am4core.options.animationsEnabled = false;
+  }
 
   // Draw both charts
   drawRiskChart();
@@ -16,6 +18,7 @@ function drawRiskChart() {
     // Create 3D pie chart
     var chart = am4core.create('riskChart', am4charts.PieChart3D);
     chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
     chart.data = [
@@ -48,6 +51,9 @@ function drawRiskChart() {
 
     // Create pie series
     var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+  // Disable interactivity
+  pieSeries.slices.template.interactionsEnabled = false;
+  pieSeries.labels.template.interactionsEnabled = false;
     pieSeries.dataFields.value = 'value';
     pieSeries.dataFields.category = 'category';
 
@@ -89,6 +95,7 @@ function drawDepartmentChart() {
   try {
     // Create 3D column chart
     var chart = am4core.create('columnChart', am4charts.XYChart3D);
+  chart.interactionsEnabled = false;
 
     // Set chart data
     chart.data = [
@@ -150,6 +157,9 @@ function drawDepartmentChart() {
 
     // Create column series
     var series = chart.series.push(new am4charts.ColumnSeries3D());
+  // Disable interactivity on series columns/labels
+  series.columns.template.interactionsEnabled = false;
+  series.bulletsContainer.interactionsEnabled = false;
     series.dataFields.valueY = 'value';
     series.dataFields.categoryX = 'department';
     series.name = 'Department Score';
@@ -184,8 +194,8 @@ function drawDepartmentChart() {
     labelBullet.label.hideOversized = false;
     labelBullet.dy = -8; // Move labels slightly above columns
 
-    // Disable cursor
-    chart.cursor = undefined;
+  // Disable cursor & interactivity
+  chart.cursor = undefined;
   } catch (error) {
     console.error('Error drawing department chart:', error);
     document.getElementById('columnChart').innerHTML =

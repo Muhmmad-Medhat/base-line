@@ -3,8 +3,10 @@
 
 // Initialize amCharts when ready
 am4core.ready(function () {
-  // Use animated theme
-  am4core.useTheme(am4themes_animated);
+  // Disable animations globally
+  if (am4core && am4core.options) {
+    am4core.options.animationsEnabled = false;
+  }
 
   // Create horizontal stacked bar chart
   drawStackedBarChart();
@@ -15,6 +17,7 @@ function drawStackedBarChart() {
     // Create XY chart
     var chart = am4core.create('stackedChart', am4charts.XYChart);
     chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
     chart.data = [
@@ -96,7 +99,7 @@ function drawStackedBarChart() {
       series.columns.template.height = am4core.percent(60);
 
       // Add value labels
-      var labelBullet = series.bullets.push(new am4charts.LabelBullet());
+  var labelBullet = series.bullets.push(new am4charts.LabelBullet());
       labelBullet.label.text = '{valueX}%';
       labelBullet.label.fontSize = 11;
       labelBullet.label.fontWeight = '600';
@@ -131,14 +134,11 @@ function drawStackedBarChart() {
     createSeries('physical', 'Physical and Environment Security', '#ffc107');
     createSeries('fraud', 'Fraud', '#4dd0e1');
 
-    // Disable cursor
+    // Disable cursor & interactivity
     chart.cursor = undefined;
-
-    // Add subtle animation
-    chart.events.on('ready', function () {
-      chart.series.each(function (series) {
-        series.columns.template.defaultState.transitionDuration = 1000;
-      });
+    chart.series.each(function (s) {
+      s.columns && (s.columns.template.interactionsEnabled = false);
+      s.bulletsContainer && (s.bulletsContainer.interactionsEnabled = false);
     });
   } catch (error) {
     console.error('Error drawing stacked bar chart:', error);

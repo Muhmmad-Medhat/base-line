@@ -3,8 +3,10 @@
 
 // Initialize amCharts when ready
 am4core.ready(function () {
-  // Use animated theme
-  am4core.useTheme(am4themes_animated);
+  // Disable animations globally
+  if (am4core && am4core.options) {
+    am4core.options.animationsEnabled = false;
+  }
 
   // Create 3D column chart
   drawColumnChart();
@@ -15,6 +17,7 @@ function drawColumnChart() {
     // Create 3D column chart
     var chart = am4core.create('columnChart', am4charts.XYChart3D);
     chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data with colors matching 5th page style
     chart.data = [
@@ -86,6 +89,9 @@ function drawColumnChart() {
 
     // Create column series (matching 5th page style)
     var series = chart.series.push(new am4charts.ColumnSeries3D());
+  // Disable interactivity on series columns/labels
+  series.columns.template.interactionsEnabled = false;
+  series.bulletsContainer.interactionsEnabled = false;
     series.dataFields.valueY = 'value';
     series.dataFields.categoryX = 'category';
     series.name = 'Awareness Level';
@@ -125,8 +131,8 @@ function drawColumnChart() {
       );
     });
 
-    // Disable cursor
-    chart.cursor = undefined;
+  // Disable cursor & all interactivity
+  chart.cursor = undefined;
   } catch (error) {
     console.error('Error drawing column chart:', error);
     document.getElementById('columnChart').innerHTML =

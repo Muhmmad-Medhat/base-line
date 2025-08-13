@@ -3,8 +3,10 @@
 
 // Initialize amCharts when ready
 am4core.ready(function () {
-  // Use animated theme
-  am4core.useTheme(am4themes_animated);
+  // Disable animations globally
+  if (am4core && am4core.options) {
+    am4core.options.animationsEnabled = false;
+  }
 
   // Create 3D column chart
   drawDepartmentChart();
@@ -15,6 +17,7 @@ function drawDepartmentChart() {
     // Create 3D column chart
     var chart = am4core.create('departmentChart', am4charts.XYChart3D);
     chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
     chart.data = [
@@ -116,8 +119,9 @@ function drawDepartmentChart() {
       );
     });
 
-    // Add hover effects
-    series.columns.template.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+  // Disable interactivity on series columns/labels
+  series.columns.template.interactionsEnabled = false;
+  series.bulletsContainer.interactionsEnabled = false;
 
     // Add legend
     chart.legend = new am4charts.Legend();

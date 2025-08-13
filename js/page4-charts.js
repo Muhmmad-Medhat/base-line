@@ -3,8 +3,10 @@
 
 // Initialize amCharts when ready
 am4core.ready(function () {
-  // Use animated theme
-  am4core.useTheme(am4themes_animated);
+  // Disable animations globally
+  if (am4core && am4core.options) {
+    am4core.options.animationsEnabled = false;
+  }
 
   // Initialize both charts
   drawParticipationChart();
@@ -16,6 +18,7 @@ function drawParticipationChart() {
     // Create 3D pie chart
     var chart = am4core.create('participationChart', am4charts.PieChart3D);
     chart.rtl = true;
+  chart.interactionsEnabled = false;
 
     // Set chart data
     chart.data = [
@@ -45,6 +48,9 @@ function drawParticipationChart() {
     var pieSeries = chart.series.push(new am4charts.PieSeries3D());
     pieSeries.dataFields.value = 'value';
     pieSeries.dataFields.category = 'category';
+  // Disable interactivity on slices/labels
+  pieSeries.slices.template.interactionsEnabled = false;
+  pieSeries.labels.template.interactionsEnabled = false;
 
     // Configure slice appearance
     pieSeries.slices.template.propertyFields.fill = 'color';
@@ -85,6 +91,7 @@ function drawScoreChart() {
   try {
     // Create 3D pie chart
     var chart = am4core.create('scoreChart', am4charts.PieChart3D);
+  chart.interactionsEnabled = false;
 
     // Set chart data
     chart.data = [
@@ -114,6 +121,9 @@ function drawScoreChart() {
     var pieSeries = chart.series.push(new am4charts.PieSeries3D());
     pieSeries.dataFields.value = 'value';
     pieSeries.dataFields.category = 'category';
+  // Disable interactivity on slices/labels
+  pieSeries.slices.template.interactionsEnabled = false;
+  pieSeries.labels.template.interactionsEnabled = false;
 
     // Configure slice appearance
     pieSeries.slices.template.propertyFields.fill = 'color';
