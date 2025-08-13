@@ -58,8 +58,9 @@ base-line/
     │   ├── page-9.css             # Page 9 specific
     │   ├── page-10.css            # Page 10 specific
     │   └── page-11.css            # Page 11 specific
-    └── utils/                      # Utility classes
-        └── layout.css             # Layout helpers
+  └── utils/                      # Utility classes
+    ├── layout.css             # Layout helpers
+    └── rtl.css                # RTL overrides (imported by main.css)
 ```
 
 ## 📖 Report Content Overview
@@ -149,21 +150,25 @@ base-line/
 
 ## ✒️ Typography & Fonts
 
-This project uses a primary system font stack by default and optionally loads Google "Gothic A1" via HTML, not via CSS `@import`.
+This project uses a primary system font stack by default and loads Google fonts via CSS `@import` in `styles/main.css` (no HTML `<link>` tags).
 
 ### Fonts
 
 - Default: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`
-- Optional: `Gothic A1` (loaded with `<link>` + preconnect; `display=swap` for performance)
+- Imported families: `Gothic A1`, `Amiri`, `Roboto`, `Galada` (via CSS `@import` in `styles/main.css`)
 
 ### How it’s wired
+
+- CSS (top of `styles/main.css`):
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amiri|Roboto|Galada&display=swap');
+```
 
 - HTML (each page head):
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles/main.css" />
 ```
 
@@ -337,6 +342,7 @@ Each page follows consistent structure:
 ### Loading Strategy
 
 - **CSS:** Single bundle via imports for optimal caching
+- **RTL:** `styles/utils/rtl.css` is imported by `styles/main.css` and only applies when `html[dir="rtl"]` is set
 - **JavaScript:** Page-specific loading to reduce initial bundle size
 - **Charts:** CDN delivery with local fallbacks
 - **Images:** Optimized background decorations via CSS
