@@ -44,9 +44,9 @@
       innerRadiusPct: 50
     },
     scorePie3d: {
-      depth3D: 25,
+      depth3D: 30,
       angle: 15,
-      innerRadiusPct: 60
+      innerRadiusPct: 50
     },
     xy3d: {
       angle: 30,

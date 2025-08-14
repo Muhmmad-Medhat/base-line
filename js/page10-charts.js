@@ -16,32 +16,40 @@ am4core.ready(function () {
 function drawRiskChart() {
   try {
     // Create 3D pie chart
-  var chart = am4core.create('riskChart', am4charts.PieChart3D);
-  chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('riskChart', am4charts.PieChart3D);
+    chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
+    chart.interactionsEnabled =
+      (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
 
     // Set chart data
     if (window.ChartStore) {
       chart.data = ChartStore.DATA.risk.map(function (d) {
-        return { category: d.category, value: d.value, color: am4core.color(d.color) };
+        return {
+          category: d.category,
+          value: d.value,
+          color: am4core.color(d.color),
+        };
       });
     }
 
     // Set inner radius to create donut effect
-  chart.innerRadius = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.pie3d.innerRadiusPct) || 40);
+    chart.innerRadius = am4core.percent(
+      (window.ChartStore && ChartStore.DEFAULTS.pie3d.innerRadiusPct) || 40
+    );
 
     // Configure 3D settings
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.pie3d.depth3D) || 30;
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.pie3d.angle) || 15;
+    chart.depth3D =
+      (window.ChartStore && ChartStore.DEFAULTS.pie3d.depth3D) || 30;
+    chart.angle = (window.ChartStore && ChartStore.DEFAULTS.pie3d.angle) || 15;
 
     // Hide legend
     chart.legend = undefined;
 
     // Create pie series
     var pieSeries = chart.series.push(new am4charts.PieSeries3D());
-  // Disable interactivity
-  pieSeries.slices.template.interactionsEnabled = false;
-  pieSeries.labels.template.interactionsEnabled = false;
+    // Disable interactivity
+    pieSeries.slices.template.interactionsEnabled = false;
+    pieSeries.labels.template.interactionsEnabled = false;
     pieSeries.dataFields.value = 'value';
     pieSeries.dataFields.category = 'category';
 
@@ -57,7 +65,7 @@ function drawRiskChart() {
     pieSeries.labels.template.fontSize = 14;
     pieSeries.labels.template.fontWeight = '700';
     pieSeries.labels.template.fill = am4core.color('#00838f');
-    pieSeries.labels.template.radius = am4core.percent(-40);
+    pieSeries.labels.template.radius = am4core.percent(5);
     pieSeries.labels.template.textAlign = 'middle';
     pieSeries.labels.template.textValign = 'middle';
 
@@ -82,8 +90,9 @@ function drawRiskChart() {
 function drawDepartmentChart() {
   try {
     // Create 3D column chart
-  var chart = am4core.create('columnChart', am4charts.XYChart3D);
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('columnChart', am4charts.XYChart3D);
+    chart.interactionsEnabled =
+      (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
 
     // Set chart data
     if (window.ChartStore) {
@@ -91,8 +100,9 @@ function drawDepartmentChart() {
     }
 
     // Configure 3D settings
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
+    chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
+    chart.depth3D =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
 
     // Add padding to accommodate labels
     chart.paddingTop = 30;
@@ -136,9 +146,9 @@ function drawDepartmentChart() {
 
     // Create column series
     var series = chart.series.push(new am4charts.ColumnSeries3D());
-  // Disable interactivity on series columns/labels
-  series.columns.template.interactionsEnabled = false;
-  series.bulletsContainer.interactionsEnabled = false;
+    // Disable interactivity on series columns/labels
+    series.columns.template.interactionsEnabled = false;
+    series.bulletsContainer.interactionsEnabled = false;
     series.dataFields.valueY = 'value';
     series.dataFields.categoryX = 'department';
     series.name = 'Department Score';
@@ -148,10 +158,15 @@ function drawDepartmentChart() {
     series.columns.template.strokeOpacity = 0.8;
 
     // Configure 3D column appearance for uniform square look
-  series.columns.template.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 80;
-  series.columns.template.angle3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
-  series.columns.template.width = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 25);
-  series.columns.template.maxWidth = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 50;
+    series.columns.template.depth3D =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 80;
+    series.columns.template.angle3D =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
+    series.columns.template.width = am4core.percent(
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 25
+    );
+    series.columns.template.maxWidth =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 50;
 
     // Ensure columns have uniform appearance with equal proportions
     series.columns.template.column3D.stroke = am4core.color('#ffffff');
@@ -173,8 +188,8 @@ function drawDepartmentChart() {
     labelBullet.label.hideOversized = false;
     labelBullet.dy = -8; // Move labels slightly above columns
 
-  // Disable cursor & interactivity
-  chart.cursor = undefined;
+    // Disable cursor & interactivity
+    chart.cursor = undefined;
   } catch (error) {
     console.error('Error drawing department chart:', error);
     document.getElementById('columnChart').innerHTML =

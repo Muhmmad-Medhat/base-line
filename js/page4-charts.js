@@ -60,7 +60,7 @@ function drawParticipationChart() {
     pieSeries.labels.template.fontWeight = 'bold';
     pieSeries.labels.template.fill = am4core.color('#00838f');
     pieSeries.labels.template.fontFamily = 'Segoe UI';
-    pieSeries.labels.template.radius = am4core.percent(-25);
+    pieSeries.labels.template.radius = am4core.percent(5);
     pieSeries.labels.template.textAlign = 'middle';
     pieSeries.labels.template.textValign = 'middle';
 
@@ -128,7 +128,7 @@ function drawScoreChart() {
     pieSeries.labels.template.fontWeight = '700';
     pieSeries.labels.template.fill = am4core.color('#00838f');
     pieSeries.labels.template.fontFamily = 'Segoe UI';
-    pieSeries.labels.template.radius = am4core.percent(-40);
+    pieSeries.labels.template.radius = am4core.percent(5);
     pieSeries.labels.template.textAlign = 'middle';
     pieSeries.labels.template.textValign = 'middle';
 

@@ -1965,13 +1965,15 @@ body {
   margin: 0 0 0 var(--spacing-lg);
 }
 .donut-chart-wrapper {
-  flex: 1;
-  max-width: 300px;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .donut-chart {
   height: 200px;
   position: relative;
-  width: 200px;
+  /* width: 200px; */
 }
 .department-section {
   margin-top: var(--spacing-lg);

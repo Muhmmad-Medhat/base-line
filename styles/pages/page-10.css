@@ -98,7 +98,7 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-sm);
   justify-content: flex-start;
   margin: var(--spacing-md) 0;
   padding: 0 var(--spacing-sm);
@@ -112,14 +112,16 @@
 }
 
 .donut-chart-wrapper {
-  flex: 1;
-  max-width: 300px;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .donut-chart {
   height: 200px;
   position: relative;
-  width: 200px;
+  /* width: 200px; */
 }
 
 /* ==========================================================================
