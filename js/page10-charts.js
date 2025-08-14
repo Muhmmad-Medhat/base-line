@@ -172,21 +172,20 @@ function drawDepartmentChart() {
     series.columns.template.column3D.stroke = am4core.color('#ffffff');
     series.columns.template.column3D.strokeWidth = 2;
 
-    // Add value labels on top of columns
+    // Centered value labels inside columns (white text)
     var labelBullet = series.bullets.push(new am4charts.LabelBullet());
-    labelBullet.label.text = '{valueY}';
+    labelBullet.label.text = '{valueY}%';
     labelBullet.label.fontSize = 16;
     labelBullet.label.fontWeight = '700';
-    labelBullet.label.fill = am4core.color('#00838f');
-
-    // Ensure labels are centered and properly aligned with columns
-    labelBullet.locationY = 0;
-    labelBullet.locationX = 0.5;
+    labelBullet.locationY = 0.5; // middle vertically
+    labelBullet.locationX = 0.5; // centered horizontally
+    labelBullet.dy = 0;
+    labelBullet.dx = 0;
     labelBullet.label.horizontalCenter = 'middle';
-    labelBullet.label.verticalCenter = 'bottom';
+    labelBullet.label.verticalCenter = 'middle';
     labelBullet.label.textAlign = 'center';
+    labelBullet.label.fill = am4core.color('#ffffff');
     labelBullet.label.hideOversized = false;
-    labelBullet.dy = -8; // Move labels slightly above columns
 
     // Disable cursor & interactivity
     chart.cursor = undefined;

@@ -15,9 +15,10 @@ am4core.ready(function () {
 function drawColumnChart() {
   try {
     // Create 3D column chart
-  var chart = am4core.create('columnChart', am4charts.XYChart3D);
-  chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
-  chart.interactionsEnabled = (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
+    var chart = am4core.create('columnChart', am4charts.XYChart3D);
+    chart.rtl = (window.ChartStore && ChartStore.DEFAULTS.rtl) || true;
+    chart.interactionsEnabled =
+      (window.ChartStore && ChartStore.DEFAULTS.interactivity) || false;
 
     // Set chart data with colors matching 5th page style
     if (window.ChartStore) {
@@ -25,8 +26,9 @@ function drawColumnChart() {
     }
 
     // Configure 3D settings
-  chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
-  chart.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
+    chart.angle = (window.ChartStore && ChartStore.DEFAULTS.xy3d.angle) || 30;
+    chart.depth3D =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.depth3D) || 60;
 
     // Create category axis with grid lines (matching 5th page style)
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -65,9 +67,9 @@ function drawColumnChart() {
 
     // Create column series (matching 5th page style)
     var series = chart.series.push(new am4charts.ColumnSeries3D());
-  // Disable interactivity on series columns/labels
-  series.columns.template.interactionsEnabled = false;
-  series.bulletsContainer.interactionsEnabled = false;
+    // Disable interactivity on series columns/labels
+    series.columns.template.interactionsEnabled = false;
+    series.bulletsContainer.interactionsEnabled = false;
     series.dataFields.valueY = 'value';
     series.dataFields.categoryX = 'category';
     series.name = 'Awareness Level';
@@ -77,38 +79,41 @@ function drawColumnChart() {
     series.columns.template.strokeOpacity = 0.8;
 
     // Minimize column width to make them taller and narrower (matching 5th page)
-  series.columns.template.width = am4core.percent((window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 30);
-  series.columns.template.maxWidth = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 40;
+    series.columns.template.width = am4core.percent(
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.widthPercent) || 30
+    );
+    series.columns.template.maxWidth =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.maxWidth) || 40;
 
     // Configure 3D column appearance (matching 5th page)
-  series.columns.template.depth3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 20;
-  series.columns.template.angle3D = (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
+    series.columns.template.depth3D =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.depth3D) || 20;
+    series.columns.template.angle3D =
+      (window.ChartStore && ChartStore.DEFAULTS.xy3d.column.angle3D) || 10;
 
     // Add data labels on top of columns
     series.columns.template.adapter.add('fill', function (fill, target) {
       return am4core.color(target.dataItem.dataContext.color);
     });
 
-    // Configure data labels (value on top, same color as column)
+    // Configure centered data labels inside columns (white text)
     var labelBullet = series.bullets.push(new am4charts.LabelBullet());
     labelBullet.label.text = '{valueY}%';
     labelBullet.label.fontSize = 14;
     labelBullet.label.fontWeight = '700';
-    // labelBullet.locationY = 0.5; // top of the column
-    labelBullet.dy = -12; // place above the column
+    labelBullet.locationY = 0.5; // middle of the column height
+    labelBullet.locationX = 0.5; // centered horizontally
+    labelBullet.dy = 0;
+    labelBullet.dx = 0;
+    labelBullet.label.horizontalCenter = 'middle';
+    labelBullet.label.verticalCenter = 'middle';
+    labelBullet.label.textAlign = 'center';
+    labelBullet.label.fill = am4core.color('#ffffff');
     labelBullet.label.hideOversized = false;
     labelBullet.label.truncate = false;
-    // Match label color to column color
-    labelBullet.label.adapter.add('fill', function (fill, target) {
-      return am4core.color(
-        target.dataItem && target.dataItem.dataContext
-          ? target.dataItem.dataContext.color
-          : '#1b0de5ff'
-      );
-    });
 
-  // Disable cursor & all interactivity
-  chart.cursor = undefined;
+    // Disable cursor & all interactivity
+    chart.cursor = undefined;
   } catch (error) {
     console.error('Error drawing column chart:', error);
     document.getElementById('columnChart').innerHTML =
